@@ -1,0 +1,98 @@
+--- Selected extended draft
++++ Publication article
+@@ -1,6 +1,6 @@
+ # Codex Studio — A Project-Centric Engineering Workspace for Agentic Software Development
+ 
+-*An independent product concept by YemenCoder / Tech Soft. This is a proposal for discussion, not an announced OpenAI product. The interface images below are concept mockups.*
++*An independent product concept by **TechSoft**. This is a proposal for discussion, not an announced OpenAI product. The interface images are conceptual mockups; account names, model labels, dates, and metrics shown are illustrative.*
+ 
+ **An agent can finish a change in minutes. Understanding why the change was made—and what should happen next—can take much longer.**
+ 
+@@ -27,7 +27,7 @@
+ 
+ Today, we can ask an agent to inspect code, write a feature, run commands, and explain its output. We can organize conversations by project and review changes. Those are substantial capabilities. **What I would like to add is a durable, navigable representation of the work that exists *between* conversations.**
+ 
+-A project in Codex Studio would be more than a folder of chats. It would hold a small set of related engineering records: a task representing intended work; a decision representing an approved choice; a rule defining an applicable constraint; a run recording an execution attempt; a result summarizing its verifiable outcome; and references to the relevant files. Conversations remain central to the experience, but they stop being the only place where important project knowledge lives.
++A project in Codex Studio would be more than a folder of chats. It would hold a small set of related engineering records: a task representing intended work; a decision representing an approved choice; a rule defining an applicable constraint; a run recording an execution attempt; a result summarizing its verifiable outcome; and references to the relevant files. Conversations remain central to the experience, while tasks, approved decisions, repository guidance, and execution evidence become easier to navigate together.
+ 
+ These records would be linked, not copied indiscriminately. A developer could open a result and find its task, governing decision, code changes, and actual test evidence—or navigate the same relationships from the task.
+ 
+@@ -73,7 +73,7 @@
+ 
+ These project-specific views would appear when working inside a project, not on every ordinary chat. Their value comes from their shared records and transitions, not from how many tabs fit across the screen.
+ 
+-![Concept mockup of the project Chat view in Codex Studio](<Dark Codex Interface with Rules Panel (1).png>)
++![Concept mockup of the project Chat view in Codex Studio](../full_RFC/assets/01-chat-project-workspace.png)
+ 
+ *Concept — The familiar chat experience remains the starting point, with project context and sources available without converting ordinary conversations into a management dashboard.*
+ 
+@@ -81,7 +81,7 @@
+ 
+ **Chat** remains where a developer describes a problem, asks Codex to inspect the repository, evaluates alternative designs, and instructs agents. It should preserve what people already appreciate about conversational programming: speed, natural language, access to tools, and the ability to refine an idea incrementally.
+ 
+-The proposed change is what happens *after* a useful answer. Suppose Codex returns an implementation outline. The developer could choose **More Details**, **Add to Tasks**, or **Create Task**. This should produce an editable task draft with a reference to the originating message—not an automatically approved plan or a duplicated transcript.
++The proposed change is what happens *after* a useful answer. Suppose Codex returns an implementation outline. **More Details** would expand the explanation, while **Add to Tasks** or **Create Task** would help turn selected work into an editable task draft linked to the originating message—not an automatically approved plan or a duplicated transcript.
+ 
+ For this view, the right panel keeps **Sources** and other conversation-relevant context. It does not need to display every project rule or every task at all times. A developer should still be able to have an ordinary conversation without maintaining metadata manually.
+ 
+@@ -95,7 +95,7 @@
+ 
+ Crucially, a task can reference the chat that created it, applicable decisions, and multiple execution results. **Tasks answer what needs attention—not what a single agent happened to say in its last message.**
+ 
+-![Concept mockup of Tasks with statuses and the Stages/Sections right sidebar](<ChatGPT Image Oct 17, 2026, 06_36_26 PM.png>)
++![Concept mockup of Tasks with statuses and the Stages/Sections right sidebar](../full_RFC/assets/02-tasks-stages-sections.png)
+ 
+ *Concept — Work grouped by status, with Stages and Sections as optional navigational structure rather than mandatory project-management ceremony.*
+ 
+@@ -107,7 +107,7 @@
+ 
+ The right panel changes with this view: instead of Chat's Sources, it presents **Project Rules**. This separation is intentional. A *decision* documents what was selected and why; a *rule* describes an instruction or boundary the agent should follow. A rule derived from `AGENTS.md` should show its source and scope, not become an untraceable copy. Turning a decision into a rule requires explicit approval; repository guidance also must not be confused with enforced execution permissions.
+ 
+-![Concept mockup of Decisions with approved records and the Rules panel](<ChatGPT Image Oct 17, 2026, 06_36_35 PM.png>)
++![Concept mockup of Decisions with approved records and the Rules panel](../full_RFC/assets/04-decisions-project-rules.png)
+ 
+ *Concept — The decision register stays central while applicable project rules occupy the right side. Approval status and provenance prevent exploratory suggestions from becoming invisible instructions.*
+ 
+@@ -115,11 +115,11 @@
+ 
+ **Results** is not another version of the Done list. It represents the outcome of an **execution run**. One task may have several results, because a first implementation can fail tests, a second can partially pass, and a later run can be accepted after review.
+ 
+-A result should summarize the operation, link to its task and run, and distinguish **Completed, Partial, Failed, and Pending Review** without confusing an agent's conclusion with verified completion. Useful details include the changed-file count, available diffs, test commands and outcomes, execution time when recorded, unresolved issues, and links to generated reports or artifacts. “Not Run” must be represented honestly when tests were skipped; a successful command exit should not automatically imply that the feature meets its acceptance criteria.
++A result should summarize the operation and link to its task and run. Execution outcome—**Completed, Partial, or Failed**—should be tracked separately from review status, such as **Pending Review**, even when the interface offers combined filters. A run can complete successfully while its result still awaits human review. Useful details include the changed-file count, available diffs, test commands and outcomes, execution time when recorded, unresolved issues, and links to generated reports or artifacts. “Not Run” must be represented honestly when tests were skipped; a successful command exit should not automatically imply that the feature meets its acceptance criteria.
+ 
+ **Review Changes**, **Open Task**, and **Re-run** should respect current repository and approval state; a re-run is not necessarily a safe replay. The right panel shows selected evidence while the center remains scannable.
+ 
+-![Concept mockup of Results with run status, test evidence and linked changes](<ChatGPT Image Oct 17, 2026, 06_36_39 PM.png>)
++![Concept mockup of Results with run status, test evidence and linked changes](../full_RFC/assets/05-results-execution-evidence.png)
+ 
+ *Concept — Execution results are independently reviewable records, not polished completion messages detached from the files and tests behind them.*
+ 
+@@ -131,7 +131,7 @@
+ 
+ An **External Sources** area in the right panel could later expose supported integrations, such as Google Drive or Dropbox, with clear connection state and permissions. Those examples are possibilities to evaluate, **not a claim that every provider is currently supported in Codex**. No connector should be assumed authorized simply because a user is viewing the project.
+ 
+-![Concept mockup of Library with Project Files, Session Files and file-type filters](<ChatGPT Image Oct 17, 2026, 06_36_43 PM.png>)
++![Concept mockup of Library with Project Files, Session Files and file-type filters](../full_RFC/assets/06-library-files-external-sources.png)
+ 
+ *Concept — Project and session artifacts can be found by type and source, while optional external connections remain explicit rather than silently expanding agent access.*
+ 
+@@ -203,7 +203,7 @@
+ 
+ A typo may still take one conversation. **Structured continuity should be available when complexity warrants it**, not mandatory for every fix.
+ 
+-## 07. A Realistic First Product, Not Another Jira
++## 07. A Focused First Release That Complements Existing Tools
+ 
+ I would start with one vertical workflow rather than a large collection of independent features: **create a task from Chat → attach an approved decision when needed → execute through existing Codex capabilities → record evidence in Results → navigate back to the task and source files**.
+ 
+@@ -236,8 +236,8 @@
+ 1. **Which missing connection causes the most friction in your workflow today: decisions to tasks, tasks to execution evidence, or project context across sessions?**
+ 2. **Would a dedicated project-centric desktop environment justify its own focused product experience, or would these connected workflows be more useful inside the current Codex view?**
+ 
+-I plan to expand the concept into a **Full Product Concept RFC** covering detailed interactions, the technical data relationships, product trade-offs, and validation criteria. That document is *not yet complete*. Anyone interested in reviewing or discussing the fuller direction is welcome to send me a private message when the material is ready.
++A detailed review draft of the **[Full Product Concept RFC](https://github.com/techsoftye/CodexStudio-/blob/main/full_RFC/EN/Codex_Studio_Full_RFC_EN.md)** is available in the **[project repository](https://github.com/techsoftye/CodexStudio-)**, with English and Arabic editions, 15 chapters, five appendices, and the original concept mockups. It covers detailed interactions, technical data relationships, product trade-offs, and validation criteria. This is a working proposal for review—not a released product or a final implementation specification. Feedback is welcome here in the discussion, or by private message for a more detailed exchange.
+ 
+ For now, the core idea is straightforward: **keep the agent power Codex already has, and give the ongoing engineering work around that power a clearer, persistent home.**
+ 
+-*— YemenCoder / Tech Soft*
++*— TechSoft*

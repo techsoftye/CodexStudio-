@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Codex Studio: a project-centric engineering workspace proposal by TechSoft. Read the selected article and the bilingual Full Product Concept RFC."><meta name="author" content="TechSoft"><meta name="color-scheme" content="light dark">
+<title>Codex Studio — A Project-Centric Engineering Workspace for Agentic Software Development — TechSoft</title>
+<link rel="stylesheet" href="../../../assets/reader.css"><script defer src="../../../assets/reader.js"></script>
+</head>
+<body class="reference-page"><a class="skip-link" href="#article">Skip to content</a>
+<header class="site-header"><a class="brand" href="../../../index.html" dir="ltr"><strong>TechSoft</strong><span>Codex Studio</span></a><nav aria-label="Main navigation"><a href="../../../index.html">Article EN</a><a href="../../../ar.html">Article AR</a><a href="../../EN/index.html">RFC EN</a><a href="../../AR/index.html">RFC AR</a><a href="../../../gallery.html">Mockups</a><a href="../../../overview.html">Overview</a><a href="https://github.com/techsoftye/CodexStudio-" rel="noopener noreferrer">GitHub</a></nav></header>
+<div class="layout"><aside class="toc-panel"><details open><summary>On this page</summary><ol><li class="level-2"><a href="#01-the-idea-in-brief">01. The Idea in Brief</a></li><li class="level-2"><a href="#02-why-a-dedicated-codex-studio">02. Why a Dedicated Codex Studio?</a></li><li class="level-2"><a href="#03-the-problem-in-practical-work">03. The Problem in Practical Work</a></li><li class="level-2"><a href="#04-the-proposal-the-project-is-the-center-of-work">04. The Proposal: The Project Is the Center of Work</a></li><li class="level-2"><a href="#05-workspace-experience-six-connected-tabs">05. Workspace Experience: Six Connected Tabs</a></li><li class="level-2"><a href="#06-one-connected-development-scenario">06. One Connected Development Scenario</a></li><li class="level-2"><a href="#07-expected-value">07. Expected Value</a></li><li class="level-2"><a href="#08-a-practical-direction-for-delivering-the-product">08. A Practical Direction for Delivering the Product</a></li><li class="level-2"><a href="#09-feedback-and-further-details">09. Feedback and Further Details</a></li><li class="level-2"><a href="#review-notes-not-part-of-the-community-post">Review Notes — Not Part of the Community Post</a></li></ol></details><div class="toc-note">15 chapters · 5 appendices · EN / AR</div></aside>
+<main id="article" class="reader"><div class="eyebrow">An independent proposal by TechSoft · Review draft</div><div class="toolbar"><button type="button" id="wide-toggle" aria-pressed="false">Wide view</button><button type="button" id="theme-toggle">Theme</button><button type="button" id="print-button">Print</button><a class="source-link" href="earlier-review-EN.md">Markdown</a></div><article><blockquote>
+<p><strong>Historical source exhibit — not the current publication.</strong> Wording reflects an earlier drafting stage; brand spelling and local image links have been normalized for this repository. For the selected publication, read the <a href="../../../index.html">current article</a>.</p>
+</blockquote>
+<h1 id="codex-studio-a-project-centric-engineering-workspace-for-agentic-software-development">Codex Studio — A Project-Centric Engineering Workspace for Agentic Software Development</h1>
+<p><em>An independent concept submitted by TechSoft for discussion, not a product announced by OpenAI.</em></p>
+<p>What happens when an agent finishes a task while the reasons behind its changes remain scattered across conversations? The code may be ready for review, but beginning the next session requires reconstructing the requirements, the approved decision, the test results, and what remains unfinished.</p>
+<p>I encountered this friction while using Codex on ongoing software projects. The challenge is not just generating code, but <strong>maintaining a shared and reliable understanding of the project over time</strong>.</p>
+<p><strong>In this post:</strong></p>
+<ol>
+<li>The idea in brief.</li>
+<li>Why a dedicated Codex Studio?</li>
+<li>The problem in practical work.</li>
+<li>The proposal: the project is the center of work.</li>
+<li>The workspace experience: six connected tabs.</li>
+<li>One connected development scenario.</li>
+<li>Expected value.</li>
+<li>A practical direction for delivering the product.</li>
+<li>Feedback and further details.</li>
+</ol>
+<h2 id="01-the-idea-in-brief">01. The Idea in Brief</h2>
+<p><strong>Codex Studio</strong> is a proposal for a standalone, developer-focused desktop application built around persistent project workspaces. It connects conversations, tasks, approved decisions, execution results, and files into one connected engineering record.</p>
+<p>It is not intended as a new model, a replacement for the Codex engine, or simply six tabs. It is a way to organize work spanning multiple sessions and agent executions, so that the project remains understandable and actionable after each conversation ends.</p>
+<h2 id="02-why-a-dedicated-codex-studio">02. Why a Dedicated Codex Studio?</h2>
+<p>Codex already supports advanced workflows. The <a href="https://openai.com/index/introducing-the-codex-app/" rel="noopener noreferrer">Codex app announcement</a> explains capabilities for parallel agents, Git worktrees, skills, and change review. The <a href="https://help.openai.com/en/articles/20001276-moving-to-the-new-chatgpt-desktop-app" rel="noopener noreferrer">unified desktop app</a> brings together Chat, Work, and a distinct Codex view.</p>
+<p>The proposal therefore does not deny these capabilities. Instead, it asks: <strong>How can we give ongoing engineering work a specialized experience that grows with it, without adding more complexity to the general experience?</strong></p>
+<p>Long-running projects need clear constraints, reviewable decisions, coordinated tasks, and verifiable results. I propose Codex Studio as a dedicated space for these needs, with an independent product identity and user experience, while drawing on Codex's existing technical infrastructure.</p>
+<p>The argument is specialization and workflow clarity, not a claim that the current application is slow or that separating the product will automatically improve performance.</p>
+<h2 id="03-the-problem-in-practical-work">03. The Problem in Practical Work</h2>
+<p>In a long-running project, an API requirement may be saved in one conversation, a UI decision in another, and a test result inside an execution run. When work resumes, assembling that information becomes a task that precedes further development.</p>
+<p>The questions are practical:</p>
+<ul>
+<li>Which decisions have actually been approved, and which ideas were only discussed?</li>
+<li>What has not started, what is being implemented, and what awaits review?</li>
+<li>Which changes and test results are associated with a particular task?</li>
+<li>What does the next agent need to know without rereading sessions unrelated to its task?</li>
+</ul>
+<p>Search helps, but <strong>finding a message is not the same as maintaining structured project state</strong>. We need not only access to information, but an understanding of its relationship to the current work and whether it remains approved.</p>
+<h2 id="04-the-proposal-the-project-is-the-center-of-work">04. The Proposal: The Project Is the Center of Work</h2>
+<p>Each project has a persistent workspace. A task connects to the request that created it; a decision explains an implementation constraint and why it was approved; and a result links to the task, tests, and changed files.</p>
+<p>The developer can move from “What did we request?” to “What did we decide?” and then “What was implemented, and with what evidence?” without manually assembling the answer from scattered locations.</p>
+<p>These tools appear <strong>within the project context</strong>, not in unrelated general conversations. The concept can integrate with Git, VS Code, and Codex CLI rather than forcing developers to replace tools they already rely on.</p>
+<h2 id="05-workspace-experience-six-connected-tabs">05. Workspace Experience: Six Connected Tabs</h2>
+<p>The concept retains a consistent interface shell with six main tabs:</p>
+<ul>
+<li>
+<p><strong>Chat:</strong> Discuss requirements, compare solutions, and direct agents, with the option to turn a message or plan into a task when needed.</p>
+</li>
+<li>
+<p><strong>Tasks:</strong> Track work through <strong>Todo, Active, Review, Done, and Deferred</strong>. Organize it by project <strong>Stages</strong> and the <strong>Sections</strong> within them, optionally link a task to a parent task, and set its priority, skills, date, and attachments when needed. Stages and sections organize work; status describes task progress.</p>
+</li>
+<li>
+<p><strong>Decisions:</strong> Preserve proposed, approved, and superseded technical and functional decisions, together with their rationale and origin. <strong>An agent's proposal does not become an approved decision without the developer's confirmation.</strong></p>
+</li>
+<li>
+<p><strong>Results:</strong> Show what each execution produced: an outcome summary, changed files, tests performed or not performed, review status, and links to verification evidence. One task may have multiple execution attempts, not just one result.</p>
+</li>
+<li>
+<p><strong>Library:</strong> Access <strong>Project Files</strong> and <strong>Session Files</strong>, filter them by type or purpose, preview them, and navigate to related inputs and outputs. Inputs, outputs, and resources remain classifications within the library, not additional top-level tabs. External sources depend on available integrations and permissions.</p>
+</li>
+<li>
+<p><strong>More:</strong> Provide lower-frequency tools, settings, and detailed execution logs without overloading the main navigation.</p>
+</li>
+</ul>
+<p>The right panel changes with the active tab: sources in Chat, <strong>Stages / Sections</strong> in Tasks, <strong>project rules</strong> in Decisions, and execution evidence in Results. A decision explains a particular choice and its reasons; a rule defines an instruction to observe within its scope. Rules should connect to their sources, such as <code>AGENTS.md</code>, rather than create competing parallel instructions.</p>
+<p><strong>The real value is in the connections between the tabs, not the tabs themselves.</strong> That requires preserving the origin and status of information and retrieving what relates to the task, not loading every project file into every request. <a href="https://developers.openai.com/blog/rethinking-skills-and-prompts-for-gpt-6-astra" rel="noopener noreferrer">OpenAI's guidance on skills and <code>AGENTS.md</code></a> emphasizes directing the model toward what a task requires rather than forcing it to read unrelated material.</p>
+<blockquote>
+<p><strong>[IMAGE 1 — Tasks concept]</strong></p>
+</blockquote>
+<p><em>Concept 1 — Tasks organized by status, with project stages and sections in the right panel to support navigation.</em></p>
+<blockquote>
+<p><strong>[IMAGE 2 — Decisions concept]</strong></p>
+</blockquote>
+<p><em>Concept 2 — Traceable approved decisions, with related project rules displayed separately.</em></p>
+<h2 id="06-one-connected-development-scenario">06. One Connected Development Scenario</h2>
+<p><em>An illustrative scenario for the proposed experience, not a description of features already launched.</em></p>
+<p>Suppose you ask Codex in <strong>Chat</strong> to prepare an affiliate marketer page. It inspects the code and proposes a plan. The developer turns its practical steps into <strong>Tasks</strong>: reviewing existing APIs, designing page components, and validating commission-related data.</p>
+<p>An engineering question arises: should the page reuse the current API contract? In this example, the developer approves a <strong>Decision</strong> to use the existing contract as the source of commission data, recording the reason: avoiding parallel logic that could produce inconsistent results.</p>
+<p>Codex executes the work using its tools. <strong>Results</strong> links each attempt to changed files, available test evidence, and unresolved issues. <strong>Library</strong> provides access to the relevant files and outputs.</p>
+<p>Returning the following week, the developer can retrieve the tasks, approved decision, and verified results together. Resuming work becomes a continuation of what was actually adopted, not a fresh interpretation of what was said in conversations.</p>
+<blockquote>
+<p><strong>[IMAGE 3 — Results concept]</strong></p>
+</blockquote>
+<p><em>Concept 3 — A result is not simply a “Done” marker: it includes evidence, review actions, and links back to the original task.</em></p>
+<h2 id="07-expected-value">07. Expected Value</h2>
+<p>This organization could clarify project state, preserve the reasons behind technical decisions, and make agent outputs easier to verify. It might also reduce repeated explanations when work resumes.</p>
+<p>The aim is for the developer to know what was completed, why it was done that way, and what requires intervention, without turning agent supervision into another documentation burden.</p>
+<p>These are <strong>hypotheses that need testing</strong>, not measured productivity gains or promises of token savings. The practical criterion is whether a developer can resume and supervise work with less ambiguity.</p>
+<h2 id="08-a-practical-direction-for-delivering-the-product">08. A Practical Direction for Delivering the Product</h2>
+<p>The first version need not rebuild Jira, an IDE, or a new agent runtime. It can start by connecting project records around a dependable task-to-execution-to-result workflow.</p>
+<p>OpenAI's document on the <a href="https://openai.com/index/unlocking-the-codex-harness/" rel="noopener noreferrer">Codex harness and App Server</a> describes foundations for reusing its capabilities across interfaces. These are foundations worth evaluating for this concept, not evidence that its details are ready to implement.</p>
+<p>A <strong>standalone, specialized desktop product</strong> remains the direction I propose. But it adds maintenance and integration costs that must be studied, especially alongside the unified application. Product-experience independence, shared infrastructure, and practical distribution should therefore be evaluated without assuming separation alone creates the value.</p>
+<h2 id="09-feedback-and-further-details">09. Feedback and Further Details</h2>
+<p>I welcome feedback from developers and the Codex product and engineering teams, particularly on two questions:</p>
+<ol>
+<li><strong>Where does following your project's history become most difficult: tasks, decisions, execution evidence, or context continuity across sessions?</strong></li>
+<li><strong>Does a standalone, project-centric engineering workspace offer value beyond extending the current Codex experience? Which connected workflow should come first?</strong></li>
+</ol>
+<p>I plan to develop a detailed <strong>Full Product Concept RFC</strong> covering workflows, interfaces, integrations, and trade-offs. The document is not complete yet; interested readers can contact me privately to discuss the concept or request detailed materials when available.</p>
+<p><em>— TechSoft</em></p>
+<hr/>
+<h2 id="review-notes-not-part-of-the-community-post">Review Notes — Not Part of the Community Post</h2>
+<p>This is an edited Arabic version of <code>codex-studio-community-proposal.md</code>, not a literal translation. It retains the source's nine sections, idea, and basic scenario. The proposed editorial changes for review are:</p>
+<ol>
+<li><strong>The rationale for product independence:</strong> Clarify that the proposal argues for specialization and organized workflows, not a claim that the current application is slow. A standalone application remains a proposed direction that needs to demonstrate value beyond what the current Codex experience could provide.</li>
+<li><strong>Precision in describing the interface:</strong> Explain the differences between a Stage, a Section, and a task status, and between a decision and a project rule; establish that Inputs, Outputs, and Resources are classifications inside Library. These are explanatory additions, not current features attributed to OpenAI.</li>
+<li><strong>The practical scenario:</strong> Turn the general question about API reuse into a specific hypothetical decision with its rationale. This detail is an editorial addition to the illustrative scenario, not a documented event from actual usage.</li>
+<li><strong>Limits of inference from references:</strong> The earlier Arabic review states that its four references were opened and compared with relevant claims during the review on October 17, 2026. They support descriptions of Codex capabilities and some principles of context and infrastructure reuse, but do not establish market need for Codex Studio or OpenAI's endorsement of a standalone application.</li>
+<li><strong>Images:</strong> The earlier review states that the three concept-image files were not available among its attachments at that time. Their placeholders, captions, and original filenames were retained without claiming to have displayed or evaluated them. It asked for the original images before publication and noted that neither the English file nor any external publication had been modified.</li>
+</ol>
+</article><footer class="article-footer"><strong>TechSoft</strong><p>A concept for discussion, not an announced product or implemented application. All interface images are conceptual mockups.</p><a href="#article">Back to top</a></footer></main></div>
+</body></html>

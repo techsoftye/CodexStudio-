@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Codex Studio: a project-centric engineering workspace proposal by TechSoft. Read the selected article and the bilingual Full Product Concept RFC."><meta name="author" content="TechSoft"><meta name="color-scheme" content="light dark">
+<title>Codex Studio — TechSoft</title>
+<link rel="stylesheet" href="../../../assets/reader.css"><script defer src="../../../assets/reader.js"></script>
+</head>
+<body class="reference-page"><a class="skip-link" href="#article">Skip to content</a>
+<header class="site-header"><a class="brand" href="../../../index.html" dir="ltr"><strong>TechSoft</strong><span>Codex Studio</span></a><nav aria-label="Main navigation"><a href="../../../index.html">Article EN</a><a href="../../../ar.html">Article AR</a><a href="../../EN/index.html">RFC EN</a><a href="../../AR/index.html">RFC AR</a><a href="../../../gallery.html">Mockups</a><a href="../../../overview.html">Overview</a><a href="https://github.com/techsoftye/CodexStudio-" rel="noopener noreferrer">GitHub</a></nav></header>
+<div class="layout"><aside class="toc-panel"><details open><summary>On this page</summary><ol><li class="level-3"><a href="#a-project-centric-development-workspace">A Project-Centric Development Workspace</a></li><li class="level-2"><a href="#part-one-concept-summary">Part One: Concept Summary</a></li><li class="level-3"><a href="#the-idea">The Idea</a></li><li class="level-3"><a href="#why-this-proposal">Why This Proposal?</a></li><li class="level-3"><a href="#vision">Vision</a></li><li class="level-3"><a href="#product-scope-and-positioning">Product Scope and Positioning</a></li><li class="level-3"><a href="#provisionally-agreed-main-interface">Provisionally Agreed Main Interface</a></li><li class="level-3"><a href="#binding-design-principles-during-proposal-development">Binding Design Principles During Proposal Development</a></li><li class="level-3"><a href="#proposed-publication-outputs-after-approval">Proposed Publication Outputs — After Approval</a></li><li class="level-2"><a href="#part-two-proposed-table-of-contents">Part Two: Proposed Table of Contents</a></li><li class="level-3"><a href="#01-executive-summary">01. Executive Summary</a></li><li class="level-3"><a href="#02-current-product-landscape">02. Current Product Landscape</a></li><li class="level-3"><a href="#03-problem-statement">03. Problem Statement</a></li><li class="level-3"><a href="#04-product-vision-positioning">04. Product Vision &amp; Positioning</a></li><li class="level-3"><a href="#05-workspace-architecture-ux">05. Workspace Architecture &amp; UX</a></li><li class="level-3"><a href="#06-tasks-development-planning">06. Tasks &amp; Development Planning</a></li><li class="level-3"><a href="#07-engineering-decisions-project-rules">07. Engineering Decisions &amp; Project Rules</a></li><li class="level-3"><a href="#08-execution-results-evidence">08. Execution Results &amp; Evidence</a></li><li class="level-3"><a href="#09-project-library-resources">09. Project Library &amp; Resources</a></li><li class="level-3"><a href="#10-context-memory-agent-orchestration">10. Context, Memory &amp; Agent Orchestration</a></li><li class="level-3"><a href="#11-technical-integration-trust">11. Technical Integration &amp; Trust</a></li><li class="level-3"><a href="#12-product-packaging-delivery-strategy">12. Product Packaging &amp; Delivery Strategy</a></li><li class="level-3"><a href="#13-validation-expected-value">13. Validation &amp; Expected Value</a></li><li class="level-3"><a href="#14-risks-trade-offs-open-questions">14. Risks, Trade-offs &amp; Open Questions</a></li><li class="level-3"><a href="#15-proposal-to-openai">15. Proposal to OpenAI</a></li><li class="level-2"><a href="#part-three-appendices">Part Three: Appendices</a></li><li class="level-2"><a href="#part-four-agreed-points-and-limits-of-this-draft">Part Four: Agreed Points and Limits of This Draft</a></li></ol></details><div class="toc-note">15 chapters · 5 appendices · EN / AR</div></aside>
+<main id="article" class="reader"><div class="eyebrow">An independent proposal by TechSoft · Review draft</div><div class="toolbar"><button type="button" id="wide-toggle" aria-pressed="false">Wide view</button><button type="button" id="theme-toggle">Theme</button><button type="button" id="print-button">Print</button><a class="source-link" href="concept-and-outline-EN.md">Markdown</a></div><article><blockquote>
+<p><strong>Historical source exhibit — not the current publication.</strong> Wording reflects an earlier drafting stage; brand spelling and local image links have been normalized for this repository. For the selected publication, read the <a href="../../../index.html">current article</a>.</p>
+</blockquote>
+<h1 id="codex-studio">Codex Studio</h1>
+<h3 id="a-project-centric-development-workspace">A Project-Centric Development Workspace</h3>
+<p><strong>Document type:</strong> Product Concept &amp; Outline<br/>
+<strong>Status:</strong> Discussion draft — awaiting approval and direction<br/>
+<strong>Proposal prepared by:</strong> TechSoft<br/>
+<strong>Date:</strong> October 17, 2026<br/>
+<strong>Intended audience:</strong> OpenAI Product, Engineering, and Developer Experience teams and the developer community<br/>
+<strong>Note:</strong> An independent proposal, not an official OpenAI document.</p>
+<hr/>
+<h2 id="part-one-concept-summary">Part One: Concept Summary</h2>
+<h3 id="the-idea">The Idea</h3>
+<p><strong>Codex Studio</strong> proposes a <strong>project-centric desktop engineering workspace</strong> that draws on existing Codex capabilities and reorganizes them into a unified, persistent developer experience. The organizing center moves from separate conversation histories to the <strong>project</strong>, linking conversations, tasks, decisions, rules, results, files, and agents.</p>
+<p>The idea is <strong>not a new AI model, a rebuild of existing Codex functions from scratch, or merely more tabs</strong>. It is a specialized product-experience concept that reuses existing infrastructure and capabilities wherever possible and adds structured connections, interfaces, and complementary workflows.</p>
+<h3 id="why-this-proposal">Why This Proposal?</h3>
+<p>Agents capable of inspecting repositories, implementing changes, and testing them are becoming increasingly important. But long-running project management requires more than resumable conversations: <strong>tasks, approved decisions, project rules, execution results, and sources</strong> must be easy to discover and trace across sessions. The proposal aims to reduce repeated requirements, scattered knowledge, and switching between tools while keeping the developer as the final decision-maker.</p>
+<h3 id="vision">Vision</h3>
+<p>For <strong>Codex Studio to become a daily engineering partner</strong>: an environment for planning development, directing agents, tracking execution, reviewing outcomes, and returning confidently to project context. The intended level of organization could make it a core development tool, without claiming in advance that it will replace IDEs or deliver proven quantitative gains.</p>
+<h3 id="product-scope-and-positioning">Product Scope and Positioning</h3>
+<ul>
+<li><strong>Principal proposal:</strong> A specialized developer desktop experience/application named <em>Codex Studio</em>.</li>
+<li><strong>Architectural alternative to evaluate:</strong> A functionally distinct engineering workspace inside the unified desktop app, should that prove more viable given the current product direction.</li>
+<li><strong>Integration rather than duplication:</strong> Build on Codex, Codex CLI, repositories, Git, Skills, <code>AGENTS.md</code>, and IDE integration, verifying current support details when writing the full document.</li>
+<li><strong>Display scope:</strong> Engineering-workspace tools appear <strong>within project context</strong>, not general conversations.</li>
+<li><strong>Intended benefit:</strong> Better organization, continuity, oversight, and productivity, not a claim that all these functions are currently unavailable.</li>
+</ul>
+<h3 id="provisionally-agreed-main-interface">Provisionally Agreed Main Interface</h3>
+<p><code>Chat | Tasks | Decisions | Results | Library | More</code></p>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Tab</th>
+<th>Practical role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Chat</strong></td>
+<td>Communicate with Codex within the project, formulate requests and plans, and turn discussion outputs into organized records.</td>
+</tr>
+<tr>
+<td><strong>Tasks</strong></td>
+<td>Manage <code>Todo / Active / Review / Done / Deferred</code> tasks, project stages and sections, parent tasks, and optional dates.</td>
+</tr>
+<tr>
+<td><strong>Decisions</strong></td>
+<td>Document and approve engineering/functional decisions, preserve rationale and supersession history, and link decisions to work.</td>
+</tr>
+<tr>
+<td><strong>Results</strong></td>
+<td>Track each execution's results, including changes, tests, evidence, outputs, review actions, and reruns.</td>
+</tr>
+<tr>
+<td><strong>Library</strong></td>
+<td>Project and session files through <code>Project Files / Session Files</code>, with search, file-type filters, preview, and links to records.</td>
+</tr>
+<tr>
+<td><strong>More</strong></td>
+<td>Less-used specialist functions and logs, selected by product need without overloading main navigation.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Side context changes by tab:</strong> Chat shows sources and conversation context. Tasks shows <strong>Stages / Sections</strong> and a current-context summary; New Task opens in the right panel as a subview with a Back action. Decisions shows <strong>Project Rules</strong> with traceability to sources such as <code>AGENTS.md</code>. Library may show <strong>optional</strong> external sources according to actual integrations and permissions, not as automatically supported capabilities.</p>
+<h3 id="binding-design-principles-during-proposal-development">Binding Design Principles During Proposal Development</h3>
+<ol>
+<li><strong>Project-first:</strong> The project organizes connected conversations, tasks, decisions, and results.</li>
+<li><strong>Reuse before rebuild:</strong> Do not present existing Codex functions as new inventions; explain the actual addition precisely.</li>
+<li><strong>Practical over decorative:</strong> Lightweight daily-use interfaces, not oversized dashboards for display alone.</li>
+<li><strong>Human oversight:</strong> No engineering decision approval or sensitive rule change without a clear review/approval mechanism.</li>
+<li><strong>Traceability:</strong> Connect tasks to requests, decisions, execution evidence, and output files.</li>
+<li><strong>Context discipline:</strong> Separate project context from long execution logs and retrieve necessary information selectively. Resource savings are <strong>a hypothesis requiring measurement</strong>.</li>
+<li><strong>Compatibility:</strong> Preserve current Codex workflows and integrations where possible; do not make the proposal a mandatory replacement for VS Code, Git, or project-management tools.</li>
+<li><strong>Evidence-based claims:</strong> Distinguish <em>Currently Available</em>, <em>Proposed</em>, and <em>Requires Validation</em>, using official sources.</li>
+</ol>
+<h3 id="proposed-publication-outputs-after-approval">Proposed Publication Outputs — After Approval</h3>
+<ul>
+<li><strong>Executive Brief:</strong> A short English summary for professional outreach.</li>
+<li><strong>Full Product Concept RFC:</strong> A detailed document with designs, comparisons, references, risks, and validation metrics.</li>
+<li><strong>OpenAI Community Topic:</strong> A focused English post with selected images and a link to the complete document, without putting every detail in the post itself.</li>
+</ul>
+<blockquote>
+<p><strong>Central message:</strong> <em>Codex Studio is not another layer of project-management features. It is a proposal for a focused, project-centric engineering experience that connects the work developers already do with Codex—planning, decisions, execution, evidence, and persistent project knowledge—into a coherent workspace.</em></p>
+</blockquote>
+<hr/>
+<h2 id="part-two-proposed-table-of-contents">Part Two: Proposed Table of Contents</h2>
+<h3 id="01-executive-summary">01. Executive Summary</h3>
+<ol>
+<li>A brief presentation of the idea and problem.</li>
+<li>Distinctive value compared with the current experience.</li>
+<li>Intended audience and expected effect.</li>
+<li>The request addressed to OpenAI.</li>
+</ol>
+<h3 id="02-current-product-landscape">02. Current Product Landscape</h3>
+<ol>
+<li>Codex within OpenAI's ecosystem and desktop app.</li>
+<li>Existing capabilities: projects, conversations, agents, tools, and skills.</li>
+<li>Potential overlap with ChatGPT Work, IDEs, and work-organization tools.</li>
+<li>A matrix: <strong>Existing / Proposed / Requires Validation</strong>.</li>
+</ol>
+<h3 id="03-problem-statement">03. Problem Statement</h3>
+<ol>
+<li>Fragmented knowledge across conversations and sessions.</li>
+<li>Weak structured links between request, decision, execution, and result.</li>
+<li>Context recovery in long-running projects.</li>
+<li>Practical scenarios showing the need and its limits.</li>
+</ol>
+<h3 id="04-product-vision-positioning">04. Product Vision &amp; Positioning</h3>
+<ol>
+<li>The Project-Centric Engineering Workspace concept.</li>
+<li>Target user personas and use cases.</li>
+<li>Codex Studio as a day-to-day engineering partner.</li>
+<li>Goals and exclusions from product scope.</li>
+<li>Relationship with existing products and development environments.</li>
+</ol>
+<h3 id="05-workspace-architecture-ux">05. Workspace Architecture &amp; UX</h3>
+<ol>
+<li>The project as the basic unit of organization.</li>
+<li>General conversations versus project conversations.</li>
+<li><strong>Chat / Tasks / Decisions / Results / Library / More</strong>.</li>
+<li>The right panel that changes with the active tab.</li>
+<li>Navigation, interface layout, and subviews.</li>
+<li>Use of earlier reference images and mockups.</li>
+</ol>
+<h3 id="06-tasks-development-planning">06. Tasks &amp; Development Planning</h3>
+<ol>
+<li>Manual or conversation-context creation.</li>
+<li>States: Todo / Active / Review / Done / Deferred.</li>
+<li>Project <strong>Stages</strong> and <strong>Sections</strong>.</li>
+<li><strong>Parent Task</strong> and child-task relationships.</li>
+<li>Priority, optional date, skills, and attachments.</li>
+<li>Execution tracking and navigation to results.</li>
+</ol>
+<h3 id="07-engineering-decisions-project-rules">07. Engineering Decisions &amp; Project Rules</h3>
+<ol>
+<li>Technical and functional decision records.</li>
+<li>Proposal, approval, and supersession flow.</li>
+<li>Extracting a decision draft from a conversation for review.</li>
+<li><strong>Decision</strong> versus <strong>Project Rule</strong>.</li>
+<li>Source, scope, and integration with <code>AGENTS.md</code>.</li>
+<li>Detecting conflicts when executing related tasks.</li>
+</ol>
+<h3 id="08-execution-results-evidence">08. Execution Results &amp; Evidence</h3>
+<ol>
+<li>Task-execution results and multiple attempts.</li>
+<li>Result states: Completed / Partial / Failed / Pending Review.</li>
+<li>Changed files, quality checks, and tests.</li>
+<li>Evidence, output files, and execution reports.</li>
+<li>Review Changes, Open Task, and Re-run according to execution permissions.</li>
+<li>Traceability between run, task, decision, and outputs.</li>
+</ol>
+<h3 id="09-project-library-resources">09. Project Library &amp; Resources</h3>
+<ol>
+<li><strong>Project Files</strong> and <strong>Session Files</strong>.</li>
+<li>Search, sorting, and file-type filtering.</li>
+<li>Input/generated files, attachments, and documents.</li>
+<li>Preview, open, and manage file links without unnecessary duplication.</li>
+<li>Optional external sources according to supported integrations.</li>
+<li>Library's relationship with tasks and execution results.</li>
+</ol>
+<h3 id="10-context-memory-agent-orchestration">10. Context, Memory &amp; Agent Orchestration</h3>
+<ol>
+<li>Shared, persistent project memory.</li>
+<li>Conversation, task, and execution context boundaries.</li>
+<li>Selective retrieval and provenance records.</li>
+<li>Compatibility with multi-agent work and current Codex capabilities.</li>
+<li>Structured task and result handoffs.</li>
+<li>Approval and developer oversight of sensitive operations.</li>
+</ol>
+<h3 id="11-technical-integration-trust">11. Technical Integration &amp; Trust</h3>
+<ol>
+<li>Reuse existing Codex infrastructure wherever possible.</li>
+<li>Codex CLI, IDE, Git, and Worktree integration.</li>
+<li>Skills and <code>AGENTS.md</code> rules.</li>
+<li>An initial view of data relationships and project state.</li>
+<li>Permissions, data protection, synchronization, and recovery.</li>
+<li>Constraints and assumptions requiring engineering verification.</li>
+</ol>
+<h3 id="12-product-packaging-delivery-strategy">12. Product Packaging &amp; Delivery Strategy</h3>
+<ol>
+<li>Rationale for a specialized Codex Studio engineering experience.</li>
+<li><strong>Standalone Desktop Product</strong> versus <strong>Specialized Workspace in Unified Desktop</strong>.</li>
+<li>Benefits, limits, and maintenance costs of each option.</li>
+<li>MVP scope without attempting to clone complete project-management systems.</li>
+<li>An incremental roadmap conditioned on test findings.</li>
+</ol>
+<h3 id="13-validation-expected-value">13. Validation &amp; Expected Value</h3>
+<ol>
+<li>Improvement hypotheses to test.</li>
+<li>Request/decision/result traceability.</li>
+<li>Speed of resuming work and recovering context.</li>
+<li>Effects of organization on rework and tool switching.</li>
+<li>Measuring resource and context usage where possible.</li>
+<li>Criteria for confirming or rejecting hypotheses.</li>
+</ol>
+<h3 id="14-risks-trade-offs-open-questions">14. Risks, Trade-offs &amp; Open Questions</h3>
+<ol>
+<li>Duplicated capabilities or added complexity.</li>
+<li>A standalone desktop product's cost versus platform unification.</li>
+<li>Stale and conflicting decisions or rules.</li>
+<li>Memory, synchronization, and external-source complexities.</li>
+<li>Security, approval, and human-control boundaries.</li>
+<li>Unresolved product and engineering questions.</li>
+</ol>
+<h3 id="15-proposal-to-openai">15. Proposal to OpenAI</h3>
+<ol>
+<li>Proposal summary and intended competitive distinction.</li>
+<li>A suggested evaluation/test of a Project-Centric Workspace.</li>
+<li>Decisions for Product, Engineering, and Developer Experience teams to discuss.</li>
+<li>An invitation for feedback and hypothesis testing.</li>
+<li>Proposed next steps.</li>
+</ol>
+<hr/>
+<h2 id="part-three-appendices">Part Three: Appendices</h2>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Appendix</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A — UI/UX Concept Gallery</strong></td>
+<td>Six reference designs, describing interface functions, interactions, and subview states.</td>
+</tr>
+<tr>
+<td><strong>B — Existing vs. Proposed Capability Matrix</strong></td>
+<td>A documented comparison of existing capabilities, proposals, and items requiring verification.</td>
+</tr>
+<tr>
+<td><strong>C — End-to-End Developer Scenario</strong></td>
+<td>The affiliate marketer page, from conversation to task, decision, execution, tests, and result.</td>
+</tr>
+<tr>
+<td><strong>D — Conceptual Data Model</strong></td>
+<td>Relationships between Project, Conversation, Task, Stage, Section, Decision, Rule, Execution Run, Result, and File.</td>
+</tr>
+<tr>
+<td><strong>E — References &amp; Evidence</strong></td>
+<td>Official OpenAI documents, supporting engineering sources, and inference limits for each.</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="part-four-agreed-points-and-limits-of-this-draft">Part Four: Agreed Points and Limits of This Draft</h2>
+<p><strong>Provisionally agreed:</strong> The working name <em>Codex Studio</em>, project-centric direction, six tabs, contextual right panel, distinct Tasks/Decisions/Results/Library roles, and reuse of available Codex capabilities.</p>
+<p><strong>Still open:</strong> Final application-independence decision, technical implementation, cost and schedule estimates, permitted external integrations, and final claims/references. Name availability and possible conflicts with other projects should also be checked before official publication.</p>
+<p><strong>Next step:</strong> Await comments and instructions before writing proposal chapters or turning it into an English community post.</p>
+</article><footer class="article-footer"><strong>TechSoft</strong><p>A concept for discussion, not an announced product or implemented application. All interface images are conceptual mockups.</p><a href="#article">Back to top</a></footer></main></div>
+</body></html>

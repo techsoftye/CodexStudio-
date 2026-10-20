@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Codex Studio: a project-centric engineering workspace proposal by TechSoft. Read the selected article and the bilingual Full Product Concept RFC."><meta name="author" content="TechSoft"><meta name="color-scheme" content="light dark">
+<title>10. Context, Memory, and Agent Orchestration — TechSoft</title>
+<link rel="stylesheet" href="../../../assets/reader.css"><script defer src="../../../assets/reader.js"></script>
+</head>
+<body class="reference-page"><a class="skip-link" href="#article">Skip to content</a>
+<header class="site-header"><a class="brand" href="../../../index.html" dir="ltr"><strong>TechSoft</strong><span>Codex Studio</span></a><nav aria-label="Main navigation"><a href="../../../index.html">Article EN</a><a href="../../../ar.html">Article AR</a><a href="../index.html">RFC EN</a><a href="../../AR/index.html">RFC AR</a><a href="../../../gallery.html">Mockups</a><a href="../../../overview.html">Overview</a><a href="https://github.com/techsoftye/CodexStudio-" rel="noopener noreferrer">GitHub</a></nav></header>
+<div class="layout"><aside class="toc-panel"><details open><summary>On this page</summary><ol><li class="level-2"><a href="#101-persistent-knowledge-and-trust">10.1 Persistent knowledge and trust</a></li><li class="level-2"><a href="#102-selective-context-assembly">10.2 Selective context assembly</a></li><li class="level-2"><a href="#103-selection-rules-and-conflict-boundaries">10.3 Selection rules and conflict boundaries</a></li><li class="level-2"><a href="#104-cache-memory-and-invalidation">10.4 Cache, memory and invalidation</a></li><li class="level-2"><a href="#105-execution-coordination-and-handoff">10.5 Execution coordination and handoff</a></li><li class="level-2"><a href="#106-interruptions-drift-and-acceptance">10.6 Interruptions, drift and acceptance</a></li><li class="level-2"><a href="#107-independent-environment-profiles">10.7 Independent environment profiles</a></li><li class="level-2"><a href="#108-cross-project-change-sets-and-recovery">10.8 Cross-project Change Sets and recovery</a></li></ol></details><div class="toc-note">15 chapters · 5 appendices · EN / AR</div></aside>
+<main id="article" class="reader"><div class="eyebrow">An independent proposal by TechSoft · Review draft</div><div class="toolbar"><button type="button" id="wide-toggle" aria-pressed="false">Wide view</button><button type="button" id="theme-toggle">Theme</button><button type="button" id="print-button">Print</button><a href="../../AR/chapters/10-context-orchestration.html" class="button">العربية</a><a class="source-link" href="10-context-orchestration.md">Markdown</a></div><article><p><a id="ch-10"></a></p>
+<h1 id="10-context-memory-and-agent-orchestration">10. Context, Memory, and Agent Orchestration</h1>
+<p><a id="s-10-1"></a></p>
+<h2 id="101-persistent-knowledge-and-trust">10.1 Persistent knowledge and trust</h2>
+<p>Persistent project knowledge is the set of linked, versioned records that survive a conversation. It includes tasks, approved decisions, rule source references, accepted outcomes, unresolved findings and file associations. It is not an ever-growing transcript injected into every prompt. Summaries are derived aids; their citations and freshness must remain inspectable.</p>
+<p>Existing Codex memories provide a recall mechanism with separate controls. They do not replace required checked-in guidance. <a href="https://learn.chatgpt.com/docs/customization/memories" rel="noopener noreferrer">E-03</a>. Studio proposes to consult such recall only through supported access and to distinguish remembered information from authoritative project records. A remembered suggestion cannot become an Approved decision by retrieval alone.</p>
+<p>The active execution context has four scopes: project binding, conversation intent, task version, and attempt snapshot. Project records can be shared by several conversations, but authorization still applies at retrieval. Cross-project search is outside the MVP. Selecting a new conversation changes the visible context, not the identity of an already-running attempt.</p>
+<p><a id="s-10-2"></a></p>
+<h2 id="102-selective-context-assembly">10.2 Selective context assembly</h2>
+<p>The proposed resolver takes project and task identity, current execution target, explicit user instruction, known touched paths, selected skills, relevant file references, and unresolved findings. It produces a manifest plus selected content/references. It is an application component, not a claimed description of OpenAI's internal prompt assembly.</p>
+<p><strong>Table 10-1 — Proposed resolver sequence</strong></p>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Action</th>
+<th>Failure or limit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Establish boundary</td>
+<td>Resolve authorized project/root, task version, runtime capabilities and current instruction sources</td>
+<td>Missing binding or denied access blocks dispatch</td>
+</tr>
+<tr>
+<td>2. Load required guidance</td>
+<td>Preserve runtime-discovered mandatory instructions and managed constraints</td>
+<td>Unknown effective guidance is marked; consequential ambiguity blocks work</td>
+</tr>
+<tr>
+<td>3. Select approved context</td>
+<td>Find current in-scope decisions and explicit task links</td>
+<td>Superseded/held/conflicting records cannot be silently selected as governing</td>
+</tr>
+<tr>
+<td>4. Add necessary material</td>
+<td>Include relevant files, selected skill references, accepted prior result and open findings</td>
+<td>Missing required source blocks; optional missing source is disclosed</td>
+</tr>
+<tr>
+<td>5. Budget and summarize</td>
+<td>Reserve space for required material; summarize optional history with provenance</td>
+<td>If required context does not fit, narrow scope or stop; never silently truncate it</td>
+</tr>
+<tr>
+<td>6. Freeze manifest</td>
+<td>Record IDs, versions, hashes, source scopes, inclusion reasons, exclusions and resolver version</td>
+<td>Store before dispatch; failed persistence blocks launch</td>
+</tr>
+<tr>
+<td>7. Revalidate</td>
+<td>Check critical versions and permissions immediately before starting</td>
+<td>Drift rebuilds context or requests a decision</td>
+</tr>
+</tbody>
+</table></div>
+<p>The manifest records supplied material, not proof that a model obeyed it. It must distinguish fully included content, excerpt, summary, reference-only and unavailable material. Token estimates, when available, are estimates labeled by method. The interface must not claim token savings from hiding a panel.</p>
+<p><a id="s-10-3"></a></p>
+<h2 id="103-selection-rules-and-conflict-boundaries">10.3 Selection rules and conflict boundaries</h2>
+<p>Explicit task links are strong relevance signals, but not proof of current applicability. A linked decision may be superseded, out of scope or on hold. Scope and status checks precede semantic similarity. Approved guidance is preferred over an unapproved suggestion for governing behavior; this is project-record selection, not a replacement for the runtime's higher-level instruction hierarchy.</p>
+<p>The user can inspect selected sources and remove optional material. Required instructions cannot be deselected merely to fit a context budget. Untrusted attachments and external pages stay in a data category; they cannot grant access, change policy, approve decisions or instruct the resolver to ignore authoritative sources.</p>
+<p>Staleness is checked through source revisions and hashes rather than arbitrary age alone. An old unchanged contract may remain valid; a recently modified contract may invalidate a result. When paths expand during execution, applicable guidance may also change. Studio should resolve the additional scope before dispatching a new action or steering at a supported boundary. If the runtime supplies no such visibility, disclose the limitation and constrain the prototype workflow.</p>
+<p><a id="s-10-4"></a></p>
+<h2 id="104-cache-memory-and-invalidation">10.4 Cache, memory and invalidation</h2>
+<p>Cache keys include project identity, permissions, task version, source versions and resolver version. A changed decision, source file, permission scope or task criterion invalidates dependent selections. Cached summaries retain links to source records and are never authoritative replacements. A cache miss may increase latency; it must not trigger broad unauthorized scanning.</p>
+<p>Deletion and revocation invalidate indexes and cached material. Local memory contribution remains controlled by the runtime/account mechanism; storing a Studio task does not implicitly enable global memory sharing. The MVP needs only explicit links and bounded retrieval. Vector indexing or learned relevance ranking is an optional later optimization that must outperform this simpler baseline.</p>
+<p><a id="s-10-5"></a></p>
+<h2 id="105-execution-coordination-and-handoff">10.5 Execution coordination and handoff</h2>
+<p>Studio submits work to Codex and attributes returned activity. Existing subagent workflows are documented, but Studio's coordination records are proposed. <a href="https://learn.chatgpt.com/docs/agent-configuration/subagents" rel="noopener noreferrer">E-10</a>. MVP serializes mutating attempts for a given execution target. Read-only review can run separately only when its source snapshot and permissions are clear.</p>
+<p>Later parallel work requires declared scope, target repository/worktree, task/attempt identifiers, context manifests and contribution lineage. Worktrees isolate file changes but cannot prove that independently produced changes are semantically compatible. A combined change requires its own integration attempt, snapshot, checks and review.</p>
+<p>A handoff contains intended outcome, current task version, applicable decision versions, rule source references, code snapshot, accepted prior evidence, unresolved findings, permitted next action and missing information. It excludes credentials and unnecessary transcripts. The receiving agent acknowledges the available target and context; an unavailable artifact is surfaced before relying on it.</p>
+<p>Coordination cannot create new authority. A parent agent's delegation does not authorize a provider connection or production write. A worker may propose a result or decision, but only the responsible human can approve the decision or accept the result under the applicable policy.</p>
+<p><a id="s-10-6"></a></p>
+<h2 id="106-interruptions-drift-and-acceptance">10.6 Interruptions, drift and acceptance</h2>
+<p>A connection failure freezes the local observed state as uncertain until reconciliation. Do not treat absence of streamed events as proof of idleness. A rule change mid-run appends an impact event; it never rewrites the original manifest. A supported continuation can append a steering amendment and retain prior content identity. A new attempt begins if a clean, separately attributable retry is required.</p>
+<p><strong>Table 10-2 — Context requirements</strong></p>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Proposed requirement and acceptance test</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R-10-01</td>
+<td>Every dispatched attempt MUST have a persisted manifest identifying task, source versions and inclusion modes.</td>
+</tr>
+<tr>
+<td>R-10-02</td>
+<td>Context budgeting MUST preserve required guidance; an oversized required set blocks or narrows scope visibly.</td>
+</tr>
+<tr>
+<td>R-10-03</td>
+<td>Superseded, held or inaccessible material MUST NOT silently govern new work; test stale links and revoked access.</td>
+</tr>
+<tr>
+<td>R-10-04</td>
+<td>Changes during execution MUST produce drift or steering records without modifying the original manifest.</td>
+</tr>
+<tr>
+<td>R-10-05</td>
+<td>Concurrent contributions MUST retain separate lineage; integration success requires evidence for the combined snapshot.</td>
+</tr>
+<tr>
+<td>R-10-06</td>
+<td>Retrieved content MUST NOT elevate its authority; an injected instruction in a file cannot approve or grant access.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Chapter 11 specifies durable dispatch and recovery. Appendix D supplies manifest and handoff relationships. Chapter 13 measures correctness and overhead, including context omissions.</p>
+<p><a id="s-10-7"></a></p>
+<h2 id="107-independent-environment-profiles">10.7 Independent environment profiles</h2>
+<p>Each Project may define several versioned Environment Profiles. A profile describes an execution target; it does not contain credentials or instantiate an environment merely by being viewed. Record host/platform, repository roots, working directory, toolchain constraints, supported setup/check commands, configuration references, secret references, network policy reference and required test targets. Store secrets in the authorized provider/credential service.</p>
+<p><strong>Table 10-3 — MetaStore profile illustration</strong></p>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Project</th>
+<th>Profile requirements to discover</th>
+<th>Evidence boundary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Backend</td>
+<td>PHP/dependency runtime, database fixture, queue/service dependencies, API contract revision</td>
+<td>Backend checks apply to their recorded service/data fixture</td>
+</tr>
+<tr>
+<td>Flutter</td>
+<td>Flutter/Dart toolchain, platform target, emulator/device availability, API endpoint configuration</td>
+<td>Analysis/unit checks, Android tests and iOS tests remain separate</td>
+</tr>
+<tr>
+<td>Next.js</td>
+<td>Node/package manager versions, build/runtime configuration, Backend endpoint and browser fixture</td>
+<td>Build success does not establish browser or cross-client behavior</td>
+</tr>
+</tbody>
+</table></div>
+<p>These are profile categories, not facts discovered about the user's installed versions. Windows-local, container, remote and cloud profiles may coexist. A Linux container does not establish an iOS-capable host; platform/device evidence requires the appropriate target. Referencing a dev container is optional and cannot erase native-platform constraints.</p>
+<p>Profile lifecycle is Draft → Ready after bounded validation; changed toolchains/configuration produce Stale; inaccessible targets produce Unavailable. Validation itself runs only when authorized. Dispatch pins the exact profile version and records observed environment identity. Failure keeps the selected target visible; no silent fallback to another host or production endpoint. A new profile version cannot rewrite old evidence.</p>
+<p>Codex uses the primary folder for default Git and instruction discovery; secondary folders do not automatically supply their own project guidance. <a href="https://learn.chatgpt.com/docs/projects" rel="noopener noreferrer">E-02</a>. The proposed adapter must explicitly establish member-specific guidance at supported boundaries or split work into separate attempts. Adding every folder to one prompt is insufficient.</p>
+<p><strong>R-10-07 — Environment identity.</strong> Every group-coordinated attempt MUST pin one Project, Environment Profile version and observed target. Acceptance: an unavailable Flutter target blocks its dependent check and never redirects it to the Backend environment.</p>
+<p><a id="s-10-8"></a></p>
+<h2 id="108-cross-project-change-sets-and-recovery">10.8 Cross-project Change Sets and recovery</h2>
+<p>A Change Set links an outcome, member tasks, dependency edges, contract versions, contributions and an Integration Manifest. It contains no single shared mutable checkout. The coordinator proposes an ordered plan; required producers must supply reviewed contract artifacts before consumers rely on them. Dependency cycles require an explicitly reviewed batch or a revised plan; the scheduler cannot resolve them by guessing.</p>
+<p>The Integration Manifest pins each repository revision/dirty-state capture, API/schema contract version, environment profile and relevant CheckRecord. Tests against separately moving branches do not prove one compatible product state. An integration attempt belongs to an explicitly selected coordinator Project and integration profile, with read/access grants for required member evidence; its manifest carries all referenced snapshots.</p>
+<p>Change Set phases are Planned / Executing / Awaiting Integration / Awaiting Review / Accepted / Held. This coordination lifecycle is separate from Task and Attempt states. Accepted requires a versioned IntegrationAssessment of the combined revision set and an immutable IntegrationReview by an authorized human; changing the assessment requires a new review. Permitted exceptions remain explicit and never imply verified completion. Any member failure or changed contract marks affected downstream edges unsatisfied and makes the integration assessment stale. Other unaffected work may continue within its grants.</p>
+<p>There is no distributed atomic Git commit across repositories. If Backend succeeds while Flutter fails, preserve both outcomes and hold group acceptance. Recovery may implement a compatible intermediate contract, revert an owned change with authorization, or create a corrective attempt. Never reset unrelated changes or replay unknown side effects. Retrying a consumer uses a new attempt and a new manifest when inputs changed.</p>
+<p><strong>R-10-08 — Combined compatibility.</strong> Group acceptance MUST bind an Integration Manifest across the required member revisions. Acceptance: Backend passing and Flutter Not Run cannot produce a verified integrated result; a subsequent contract change invalidates only the dependent assessment and preserves history.</p>
+<!-- related-start -->
+<p><strong>Related sections:</strong> <a href="07-decisions-rules.html#ch-07">07. Engineering Decisions and Project Rules</a> · <a href="11-integration-trust.html#ch-11">11. Technical Integration and Trust</a> · <a href="13-validation-value.html#ch-13">13. Validation and Expected Value</a> · <a href="../appendices/D-conceptual-data-model.html#app-d">Appendix D. Conceptual Data Model</a></p>
+<!-- related-end -->
+</article><footer class="article-footer"><strong>TechSoft</strong><p>A concept for discussion, not an announced product or implemented application. All interface images are conceptual mockups.</p><a href="#article">Back to top</a></footer></main></div>
+</body></html>

@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Codex Studio: a project-centric engineering workspace proposal by TechSoft. Read the selected article and the bilingual Full Product Concept RFC."><meta name="author" content="TechSoft"><meta name="color-scheme" content="light dark">
+<title>09. Project Library and Resources — TechSoft</title>
+<link rel="stylesheet" href="../../../assets/reader.css"><script defer src="../../../assets/reader.js"></script>
+</head>
+<body class="reference-page"><a class="skip-link" href="#article">Skip to content</a>
+<header class="site-header"><a class="brand" href="../../../index.html" dir="ltr"><strong>TechSoft</strong><span>Codex Studio</span></a><nav aria-label="Main navigation"><a href="../../../index.html">Article EN</a><a href="../../../ar.html">Article AR</a><a href="../index.html">RFC EN</a><a href="../../AR/index.html">RFC AR</a><a href="../../../gallery.html">Mockups</a><a href="../../../overview.html">Overview</a><a href="https://github.com/techsoftye/CodexStudio-" rel="noopener noreferrer">GitHub</a></nav></header>
+<div class="layout"><aside class="toc-panel"><details open><summary>On this page</summary><ol><li class="level-2"><a href="#091-purpose-views-and-classifications">09.1 Purpose, views and classifications</a></li><li class="level-2"><a href="#092-file-identity-and-provenance">09.2 File identity and provenance</a></li><li class="level-2"><a href="#093-ingest-selection-and-preview">09.3 Ingest, selection and preview</a></li><li class="level-2"><a href="#094-availability-and-lifecycle">09.4 Availability and lifecycle</a></li><li class="level-2"><a href="#095-optional-external-sources">09.5 Optional external sources</a></li><li class="level-2"><a href="#096-acceptance-criteria">09.6 Acceptance criteria</a></li><li class="level-2"><a href="#097-shared-contracts-and-multimodal-evidence">09.7 Shared contracts and multimodal evidence</a></li></ol></details><div class="toc-note">15 chapters · 5 appendices · EN / AR</div></aside>
+<main id="article" class="reader"><div class="eyebrow">An independent proposal by TechSoft · Review draft</div><div class="toolbar"><button type="button" id="wide-toggle" aria-pressed="false">Wide view</button><button type="button" id="theme-toggle">Theme</button><button type="button" id="print-button">Print</button><a href="../../AR/chapters/09-library-resources.html" class="button">العربية</a><a class="source-link" href="09-library-resources.md">Markdown</a></div><article><p><a id="ch-09"></a></p>
+<h1 id="09-project-library-and-resources">09. Project Library and Resources</h1>
+<p><a id="s-09-1"></a></p>
+<h2 id="091-purpose-views-and-classifications">09.1 Purpose, views and classifications</h2>
+<p>Library provides access to the material used or produced in project work while preserving origin and version. Its primary views are <strong>Project Files / Session Files</strong>. Project Files contains project-associated references, selected repository paths and maintained artifacts. Session Files contains attachments and generated outputs associated with an identified conversation. It is not a browser for all raw runtime session logs.</p>
+<p>A single file version may appear in both views through associations. Inputs, Outputs and Resources are classifications within Library. A generated report can be an Output and a document; when reused by another task it may also be that task's Input. Classification belongs to the relationship or usage, not an exclusive permanent label on the bytes.</p>
+<p>Type filters remain <strong>All / Docs / Code / Images / Data / Archives</strong>. Search matches visible metadata and, only when explicitly supported and authorized, indexed content. Sorting uses named fields such as modified time or filename. Optional list/grid presentation must not change selection or permissions. No mandatory cloud connection is required.</p>
+<p><a id="s-09-2"></a></p>
+<h2 id="092-file-identity-and-provenance">09.2 File identity and provenance</h2>
+<p><strong>Table 09-1 — Reference kinds</strong></p>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Kind</th>
+<th>Identity and version</th>
+<th>Expected behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Live repository file</td>
+<td>Project root binding plus relative path; current revision/hash when read</td>
+<td>Opening live source shows current content, with a live indicator</td>
+</tr>
+<tr>
+<td>Uploaded attachment</td>
+<td>Stable artifact identity, original name, content hash and capture time</td>
+<td>Immutable captured version; replacement creates a new version</td>
+</tr>
+<tr>
+<td>Generated artifact</td>
+<td>Attempt/conversation origin, file identity and hash</td>
+<td>Linked from Results; cannot be mistaken for a measured test if illustrative</td>
+</tr>
+<tr>
+<td>External reference</td>
+<td>Provider/account scope, external ID, version when available</td>
+<td>Availability depends on authorization; cache behavior is explicit</td>
+</tr>
+<tr>
+<td>Historical evidence file</td>
+<td>Exact recorded version/hash and evidence relation</td>
+<td>Opening never silently resolves to a newer same-named file</td>
+</tr>
+</tbody>
+</table></div>
+<p>A filename is a label, not identity. Two sessions can contain different files with the same name. The list must show enough source/session information to distinguish them. Deduplicating identical bytes is optional storage optimization within an authorized boundary; it must not leak that another project possesses a file.</p>
+<p><a id="s-09-3"></a></p>
+<h2 id="093-ingest-selection-and-preview">09.3 Ingest, selection and preview</h2>
+<p>Users can upload a file, select an existing authorized reference, or associate a generated output with the project. An agent may propose that association; it does not automatically expose every generated or personal file to future tasks. Import stages are selected, validating, available, or failed. Validation checks safe path resolution, content type, size limits provided by implementation, readable content where required, and permissions.</p>
+<p>The right panel shows selected-file metadata, location, origin, availability, linked work and <strong>Open / Preview</strong> actions. Preview should use a safe renderer appropriate to type. Unsupported formats offer an explicit open/download route without executing embedded content. Archives are listed without automatically extracting them. An invalid path, denied access, corrupt file or unsupported preview yields a specific message while preserving the reference.</p>
+<p>Removing an association from a task or session does not delete the underlying file. Deleting an owned artifact is a separate action showing affected evidence links and retention implications. Live repository deletion should remain an explicit file operation under runtime permissions, not a side effect of clearing a Library row.</p>
+<p><a id="s-09-4"></a></p>
+<h2 id="094-availability-and-lifecycle">09.4 Availability and lifecycle</h2>
+<p>Availability is independent of classification: Available, Missing, Access Denied, Offline, or Version Unavailable. An external reference may remain a visible historical record after revocation while its content becomes inaccessible. The UI should not infer that cached bytes are authorized for continued use merely because they exist.</p>
+<p>Moving a repository root changes the binding only after identity and containment are checked. If the same relative path resolves to different bytes, historical links remain attached to their recorded version. Results' evidence retention rules take priority over convenience cleanup. If policy requires removal, leave a tombstone stating what is no longer available and why; do not retain prohibited content under the guise of auditability.</p>
+<p>Search indexing respects project access and deletion. A deleted or revoked document must not remain retrievable through a stale index. Index rebuilds are derivable operations and cannot alter authoritative records or approval state.</p>
+<p><a id="s-09-5"></a></p>
+<h2 id="095-optional-external-sources">09.5 Optional external sources</h2>
+<p>The inherited mockup names Google Drive, Dropbox, OneDrive, Import from URL and Sync from Git repository. Those are design examples. This RFC does not verify their compatibility with a standalone Studio or promise them in the MVP. Provider authorization, scopes, revocation, revision access, rate limits and retention must be evaluated individually.</p>
+<p>A future connection flow must identify provider account, chosen resource scope, project association and intended agent access. Connecting an account does not grant all projects its entire contents. A URL import is content retrieval, not permission to execute instructions inside the page. “Sync from Git repository” must not imply an automatic pull, branch change or overwrite when viewing Library. These behaviors require separate approved integration design.</p>
+<p><a id="s-09-6"></a></p>
+<h2 id="096-acceptance-criteria">09.6 Acceptance criteria</h2>
+<p><strong>Table 09-2 — Library requirements</strong></p>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Proposed requirement and acceptance test</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R-09-01</td>
+<td>Project Files and Session Files MUST remain primary views; Input/Output/Resource and type filters do not replace them.</td>
+</tr>
+<tr>
+<td>R-09-02</td>
+<td>A file shared by project and session associations MUST retain one logical identity and distinguish revisions.</td>
+</tr>
+<tr>
+<td>R-09-03</td>
+<td>Live and historical references MUST open their stated versions; a missing historical artifact cannot fall back silently to the live path.</td>
+</tr>
+<tr>
+<td>R-09-04</td>
+<td>Preview and import MUST validate access and safe handling; malformed files cannot trigger executable content.</td>
+</tr>
+<tr>
+<td>R-09-05</td>
+<td>Removing an association MUST NOT delete bytes; deleting retained evidence requires an explicit policy-aware action and availability record.</td>
+</tr>
+<tr>
+<td>R-09-06</td>
+<td>External access MUST be scoped and revocable; unavailable providers remain unavailable rather than suggesting a working integration.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Figure A-06 illustrates navigation. Chapter 08 owns interpretation of evidence; Chapter 11 owns storage, containment, retention and export.</p>
+<p><a id="s-09-7"></a></p>
+<h2 id="097-shared-contracts-and-multimodal-evidence">09.7 Shared contracts and multimodal evidence</h2>
+<p>A group-shared reference is a permission-checked FileAssociation exposed within a member's Project Files; it is not a third primary Library division. Session attachments remain Session Files, and Input/Output/Resource remain usage classifications. Shared API contracts retain producer project, immutable version/hash, consumer associations and availability. Membership changes invalidate access and cached previews.</p>
+<p>Optional voice/video interaction produces consented SourceReferences: transcript or frame/time range, origin, capture time, model interpretation and retention choice. An interpretation is separate from the captured media. Screen images can contain secrets; scope the capture, redact exports and preserve an explicit omission marker. Audio/video collection is off unless the user invokes it and the selected integration supports it. A transcript cannot authorize a repository write merely by quoting “approved.”</p>
+<p><strong>R-09-07 — Shared and multimodal provenance.</strong> Shared contracts and media-derived context MUST retain source/version and access scope. Acceptance: revocation removes future retrieval, an uncertain transcript stays uncertain, and a visual claim links to the captured frame or declares its absence.</p>
+<!-- related-start -->
+<p><strong>Related sections:</strong> <a href="08-results-evidence.html#ch-08">08. Execution Results and Evidence</a> · <a href="11-integration-trust.html#ch-11">11. Technical Integration and Trust</a> · <a href="../appendices/D-conceptual-data-model.html#app-d">Appendix D. Conceptual Data Model</a> · <a href="../appendices/A-design-gallery.html#app-a">Appendix A. UI/UX Concept Gallery</a></p>
+<!-- related-end -->
+</article><footer class="article-footer"><strong>TechSoft</strong><p>A concept for discussion, not an announced product or implemented application. All interface images are conceptual mockups.</p><a href="#article">Back to top</a></footer></main></div>
+</body></html>

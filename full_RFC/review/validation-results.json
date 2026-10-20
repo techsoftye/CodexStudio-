@@ -1,0 +1,241 @@
+{
+  "version": "1.1",
+  "date": "2026-10-18",
+  "generated_utc": "2026-10-18T04:00:33.986991+00:00",
+  "chapter_count_per_language": 15,
+  "appendix_count_per_language": 5,
+  "requirement_count": 69,
+  "local_links_checked": 617,
+  "images_unchanged": true,
+  "original_files_checked": 66,
+  "original_changes": [],
+  "long_duplicate_paragraphs": [],
+  "parity": [
+    {
+      "file": "01-executive-summary.md",
+      "subsection_parity": true,
+      "identifier_parity": true,
+      "table_shape_parity": true,
+      "official_url_parity": true,
+      "image_parity": true,
+      "caption_number_parity": true,
+      "en_words": 808,
+      "ar_words": 735
+    },
+    {
+      "file": "02-capability-baseline.md",
+      "subsection_parity": true,
+      "identifier_parity": true,
+      "table_shape_parity": true,
+      "official_url_parity": true,
+      "image_parity": true,
+      "caption_number_parity": true,
+      "en_words": 904,
+      "ar_words": 850
+    },
+    {
+      "file": "03-problem-statement.md",
+      "subsection_parity": true,
+      "identifier_parity": true,
+      "table_shape_parity": true,
+      "official_url_parity": true,
+      "image_parity": true,
+      "caption_number_parity": true,
+      "en_words": 704,
+      "ar_words": 629
+    },
+    {
+      "file": "04-vision-positioning.md",
+      "subsection_parity": true,
+      "identifier_parity": true,
+      "table_shape_parity": true,
+      "official_url_parity": true,
+      "image_parity": true,
+      "caption_number_parity": true,
+      "en_words": 1023,
+      "ar_words": 895
+    },
+    {
+      "file": "05-workspace-ux.md",
+      "subsection_parity": true,
+      "identifier_parity": true,
+      "table_shape_parity": true,
+      "official_url_parity": true,
+      "image_parity": true,
+      "caption_number_parity": true,
+      "en_words": 1533,
+      "ar_words": 1396
+    },
+    {
+      "file": "06-tasks-planning.md",
+      "subsection_parity": true,
+      "identifier_parity": true,
+      "table_shape_parity": true,
+      "official_url_parity": true,
+      "image_parity": true,
+      "caption_number_parity": true,
+      "en_words": 1421,
+      "ar_words": 1270
+    },
+    {
+      "file": "07-decisions-rules.md",
+      "subsection_parity": true,
+      "identifier_parity": true,
+      "table_shape_parity": true,
+      "official_url_parity": true,
+      "image_parity": true,
+      "caption_number_parity": true,
+      "en_words": 1341,
+      "ar_words": 1167
+    },
+    {
+      "file": "08-results-evidence.md",
+      "subsection_parity": true,
+      "identifier_parity": true,
+      "table_shape_parity": true,
+      "official_url_parity": true,
+      "image_parity": true,
+      "caption_number_parity": true,
+      "en_words": 1625,
+      "ar_words": 1455
+    },
+    {
+      "file": "09-library-resources.md",
+      "subsection_parity": true,
+      "identifier_parity": true,
+      "table_shape_parity": true,
+      "official_url_parity": true,
+      "image_parity": true,
+      "caption_number_parity": true,
+      "en_words": 1196,
+      "ar_words": 1058
+    },
+    {
+      "file": "10-context-orchestration.md",
+      "subsection_parity": true,
+      "identifier_parity": true,
+      "table_shape_parity": true,
+      "official_url_parity": true,
+      "image_parity": true,
+      "caption_number_parity": true,
+      "en_words": 1846,
+      "ar_words": 1677
+    },
+    {
+      "file": "11-integration-trust.md",
+      "subsection_parity": true,
+      "identifier_parity": true,
+      "table_shape_parity": true,
+      "official_url_parity": true,
+      "image_parity": true,
+      "caption_number_parity": true,
+      "en_words": 2561,
+      "ar_words": 2386
+    },
+    {
+      "file": "12-delivery-mvp.md",
+      "subsection_parity": true,
+      "identifier_parity": true,
+      "table_shape_parity": true,
+      "official_url_parity": true,
+      "image_parity": true,
+      "caption_number_parity": true,
+      "en_words": 1518,
+      "ar_words": 1441
+    },
+    {
+      "file": "13-validation-value.md",
+      "subsection_parity": true,
+      "identifier_parity": true,
+      "table_shape_parity": true,
+      "official_url_parity": true,
+      "image_parity": true,
+      "caption_number_parity": true,
+      "en_words": 1495,
+      "ar_words": 1430
+    },
+    {
+      "file": "14-risks-questions.md",
+      "subsection_parity": true,
+      "identifier_parity": true,
+      "table_shape_parity": true,
+      "official_url_parity": true,
+      "image_parity": true,
+      "caption_number_parity": true,
+      "en_words": 1116,
+      "ar_words": 1069
+    },
+    {
+      "file": "15-proposal-next-steps.md",
+      "subsection_parity": true,
+      "identifier_parity": true,
+      "table_shape_parity": true,
+      "official_url_parity": true,
+      "image_parity": true,
+      "caption_number_parity": true,
+      "en_words": 553,
+      "ar_words": 472
+    },
+    {
+      "file": "A-design-gallery.md",
+      "subsection_parity": true,
+      "identifier_parity": true,
+      "table_shape_parity": true,
+      "official_url_parity": true,
+      "image_parity": true,
+      "caption_number_parity": true,
+      "en_words": 1112,
+      "ar_words": 948
+    },
+    {
+      "file": "B-capability-matrix.md",
+      "subsection_parity": true,
+      "identifier_parity": true,
+      "table_shape_parity": true,
+      "official_url_parity": true,
+      "image_parity": true,
+      "caption_number_parity": true,
+      "en_words": 1011,
+      "ar_words": 957
+    },
+    {
+      "file": "C-affiliate-scenario.md",
+      "subsection_parity": true,
+      "identifier_parity": true,
+      "table_shape_parity": true,
+      "official_url_parity": true,
+      "image_parity": true,
+      "caption_number_parity": true,
+      "en_words": 1515,
+      "ar_words": 1268
+    },
+    {
+      "file": "D-conceptual-data-model.md",
+      "subsection_parity": true,
+      "identifier_parity": true,
+      "table_shape_parity": true,
+      "official_url_parity": true,
+      "image_parity": true,
+      "caption_number_parity": true,
+      "en_words": 2077,
+      "ar_words": 1980
+    },
+    {
+      "file": "E-references-evidence.md",
+      "subsection_parity": true,
+      "identifier_parity": true,
+      "table_shape_parity": true,
+      "official_url_parity": true,
+      "image_parity": true,
+      "caption_number_parity": true,
+      "en_words": 1497,
+      "ar_words": 1415
+    }
+  ],
+  "errors": [],
+  "compiled_words": {
+    "EN": 27099,
+    "AR": 24742
+  },
+  "scope": "Documentation checks only; no product tests, Word layout validation, or independent human review."
+}

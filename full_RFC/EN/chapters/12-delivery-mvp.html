@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Codex Studio: a project-centric engineering workspace proposal by TechSoft. Read the selected article and the bilingual Full Product Concept RFC."><meta name="author" content="TechSoft"><meta name="color-scheme" content="light dark">
+<title>12. Product Packaging and Delivery Strategy — TechSoft</title>
+<link rel="stylesheet" href="../../../assets/reader.css"><script defer src="../../../assets/reader.js"></script>
+</head>
+<body class="reference-page"><a class="skip-link" href="#article">Skip to content</a>
+<header class="site-header"><a class="brand" href="../../../index.html" dir="ltr"><strong>TechSoft</strong><span>Codex Studio</span></a><nav aria-label="Main navigation"><a href="../../../index.html">Article EN</a><a href="../../../ar.html">Article AR</a><a href="../index.html">RFC EN</a><a href="../../AR/index.html">RFC AR</a><a href="../../../gallery.html">Mockups</a><a href="../../../overview.html">Overview</a><a href="https://github.com/techsoftye/CodexStudio-" rel="noopener noreferrer">GitHub</a></nav></header>
+<div class="layout"><aside class="toc-panel"><details open><summary>On this page</summary><ol><li class="level-2"><a href="#121-delivery-alternatives">12.1 Delivery alternatives</a></li><li class="level-2"><a href="#122-mvp-boundary">12.2 MVP boundary</a></li><li class="level-2"><a href="#123-staged-delivery-gates">12.3 Staged delivery gates</a></li><li class="level-2"><a href="#124-maintenance-and-adoption">12.4 Maintenance and adoption</a></li><li class="level-2"><a href="#125-expansion-sequence-and-requirement-applicability">12.5 Expansion sequence and requirement applicability</a></li><li class="level-2"><a href="#126-ten-year-technology-horizon-indicators-and-product-consequences">12.6 Ten-year technology horizon: indicators and product consequences</a></li></ol></details><div class="toc-note">15 chapters · 5 appendices · EN / AR</div></aside>
+<main id="article" class="reader"><div class="eyebrow">An independent proposal by TechSoft · Review draft</div><div class="toolbar"><button type="button" id="wide-toggle" aria-pressed="false">Wide view</button><button type="button" id="theme-toggle">Theme</button><button type="button" id="print-button">Print</button><a href="../../AR/chapters/12-delivery-mvp.html" class="button">العربية</a><a class="source-link" href="12-delivery-mvp.md">Markdown</a></div><article><p><a id="ch-12"></a></p>
+<h1 id="12-product-packaging-and-delivery-strategy">12. Product Packaging and Delivery Strategy</h1>
+<p><a id="s-12-1"></a></p>
+<h2 id="121-delivery-alternatives">12.1 Delivery alternatives</h2>
+<p>The primary direction remains a standalone Codex Studio desktop product with shared Codex capability where supported. Evaluation must separate user-facing product independence from how much implementation can be shared. A separate binary may share runtime components; an integrated workspace may still require substantial new state and recovery logic.</p>
+<p><strong>Table 12-1 — Packaging trade-offs</strong></p>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Advantages to test</th>
+<th>Costs and constraints</th>
+<th>Appropriate decision condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Standalone desktop product — primary</td>
+<td>Focused engineering navigation, distinct onboarding and release priorities</td>
+<td>Installer/update chain, authentication, compatibility, support, accessibility and data migration ownership</td>
+<td>Connected workflow value justifies incremental lifecycle cost</td>
+</tr>
+<tr>
+<td>Specialized workspace inside unified desktop</td>
+<td>Shared distribution, account and common UI infrastructure may reduce duplication</td>
+<td>Navigation complexity, release coupling, shared-state boundaries and competing product priorities</td>
+<td>Comparable workflow value with materially lower total maintenance</td>
+</tr>
+<tr>
+<td>Extension or companion around current tools</td>
+<td>Small integration surface may test demand quickly</td>
+<td>Limited navigation/event hooks, split state, inconsistent recovery and extra user bookkeeping</td>
+<td>Adequate for validation without pretending to deliver the full product</td>
+</tr>
+<tr>
+<td>Continue current workflow</td>
+<td>No new product maintenance</td>
+<td>Relationships maintained through current tools and documentation</td>
+<td>Measured incremental benefit does not justify Studio</td>
+</tr>
+</tbody>
+</table></div>
+<p>No cost ranking is asserted without investigation. Shared infrastructure can also impose coupling costs, and an extension can become expensive if it relies on unstable interfaces.</p>
+<p><a id="s-12-2"></a></p>
+<h2 id="122-mvp-boundary">12.2 MVP boundary</h2>
+<p><strong>Table 12-2 — MVP / Later / Excluded</strong></p>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Area</th>
+<th>MVP</th>
+<th>Later, conditional on evidence</th>
+<th>Excluded from this concept</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Project scope</td>
+<td>Local single-user project; one primary repo per attempt</td>
+<td>Project Groups with independent environments, then hybrid-team authority</td>
+<td>Replacing all work-management systems</td>
+</tr>
+<tr>
+<td>Navigation</td>
+<td>Six tabs and contextual panels</td>
+<td>Refined layouts based on study findings</td>
+<td>Seventh Execution tab</td>
+</tr>
+<tr>
+<td>Tasks</td>
+<td>Canonical form, lifecycle, provenance, optional organization</td>
+<td>External tracker mapping after authority design</td>
+<td>Assignee, generic Related To, Add Sub-task creation fields</td>
+</tr>
+<tr>
+<td>Decisions/rules</td>
+<td>Proposed/Approved/Superseded; version history; source-backed rules</td>
+<td>Rich shared approval workflows</td>
+<td>Automatic agent approval</td>
+</tr>
+<tr>
+<td>Results</td>
+<td>Attempt mapping, checks, captured evidence, review and retry</td>
+<td>Provider check integrations</td>
+<td>Private reasoning exposure</td>
+</tr>
+<tr>
+<td>Library</td>
+<td>Local references, attachments, outputs, Project/Session views</td>
+<td>Selected cloud sources after scoped authorization</td>
+<td>Universal automatic account ingestion</td>
+</tr>
+<tr>
+<td>Context</td>
+<td>Explicit links and bounded selection with manifest</td>
+<td>Advanced ranking and parallel coordination</td>
+<td>Unbounded history injection</td>
+</tr>
+<tr>
+<td>Operations</td>
+<td>Recovery, backup, export and diagnostics</td>
+<td>Cross-device sync after conflict/security design</td>
+<td>Silent background execution from due dates</td>
+</tr>
+<tr>
+<td>Reuse</td>
+<td>One validated runtime adapter</td>
+<td>Additional supported hosts/integrations</td>
+<td>Rebuilding the Codex agent engine</td>
+</tr>
+<tr>
+<td>Prompts</td>
+<td>Existing conversational interaction</td>
+<td>No committed expansion</td>
+<td>Prompt Templates</td>
+</tr>
+</tbody>
+</table></div>
+<p>A complete vertical workflow is the MVP acceptance unit. A shell with six empty tabs is not an MVP. Conversely, advanced connectors are not prerequisites for testing local continuity and review.</p>
+<p><a id="s-12-3"></a></p>
+<h2 id="123-staged-delivery-gates">12.3 Staged delivery gates</h2>
+<p><strong>Table 12-3 — Conditional roadmap</strong></p>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Deliverable</th>
+<th>Exit evidence</th>
+<th>Stop or revise condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>G0 — Design and feasibility</td>
+<td>Reviewed state model; supported integration inventory; privacy/retention decisions</td>
+<td>Q-01 to Q-04 resolved sufficiently for a bounded prototype</td>
+<td>Required runtime control unavailable without unsafe dependence</td>
+</tr>
+<tr>
+<td>G1 — Local vertical prototype</td>
+<td>Chat-to-task-to-attempt-to-reviewed-result chain; local Library; recovery</td>
+<td>MVP-scoped requirements pass, including crash and stale-evidence cases</td>
+<td>Duplicated dispatch or unreliable evidence attribution</td>
+</tr>
+<tr>
+<td>G2 — Comparative value pilot</td>
+<td>Counterbalanced workflow study from Chapter 13</td>
+<td>Correctness guardrails and actionable time/effort results</td>
+<td>Faster navigation with worse constraint or review accuracy</td>
+</tr>
+<tr>
+<td>G3 — Packaging assessment</td>
+<td>Standalone versus integrated lifecycle cost and support plan</td>
+<td>Account/update/migration/accessibility ownership agreed</td>
+<td>Incremental maintenance exceeds justified value</td>
+</tr>
+<tr>
+<td>G4 — Limited expansion</td>
+<td>One evidence-backed addition at a time</td>
+<td>Integration-specific security, recovery and value checks</td>
+<td>Scope grows without improved user outcomes</td>
+</tr>
+</tbody>
+</table></div>
+<p>No durations, staffing figures or budgets are estimated here. G0 requires engineering input from the eventual implementer; the document does not assume authority over OpenAI's internal roadmap or teams.</p>
+<p><a id="s-12-4"></a></p>
+<h2 id="124-maintenance-and-adoption">12.4 Maintenance and adoption</h2>
+<p>Maintenance accounting must include adapter schema changes, runtime regressions, platform packaging, authentication compatibility, state migrations, evidence storage, connector permissions, localization, accessibility and incident handling. Measure the work needed to track a runtime update and restore a backup; do not count only initial UI development.</p>
+<p>Adoption starts by opening a repository and creating useful work without importing an entire backlog. Existing code and instructions remain authoritative. A tracker issue can be linked without an automatic status mirror. Exportability provides an exit route if Studio is not retained. Historical records must remain readable after a pilot is stopped.</p>
+<p><strong>R-12-01 — Complete narrow delivery.</strong> G1 MUST demonstrate one end-to-end workflow including failure and recovery, with every MVP cell in Table 12-2 represented. An attractive mockup or isolated successful run is insufficient.</p>
+<p><strong>R-12-02 — Evidence-gated expansion.</strong> New integration, synchronization or parallel coordination scope MUST identify the validated user need, authority model and maintenance owner before implementation approval.</p>
+<p><a id="s-12-5"></a></p>
+<h2 id="125-expansion-sequence-and-requirement-applicability">12.5 Expansion sequence and requirement applicability</h2>
+<p>Version 1.1 makes Project Groups and hybrid teams explicit parts of the full concept. The local MVP remains the first complete learning unit. Requirements introduced for group/team/modality/domain behavior apply when that expansion is implemented; they are not hidden prerequisites for G1. Every release review must declare its implemented scope and corresponding requirements.</p>
+<p><strong>Table 12-4 — Expansion gates after the local workflow</strong></p>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Expansion</th>
+<th>Delivered behavior</th>
+<th>Required gate</th>
+<th>Intentionally not inferred</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Group visibility</td>
+<td>Authorized member links, independent profiles, shared contract references</td>
+<td>R-04-04, R-05-07, R-09-07, R-10-07; V-13</td>
+<td>Shared filesystem, credentials or automatic launch</td>
+</tr>
+<tr>
+<td>Coordinated product change</td>
+<td>Project-local tasks, dependency graph, Change Sets and combined evidence</td>
+<td>R-06-07, R-07-07, R-10-08; V-14/V-15</td>
+<td>Atomic changes or releases across repositories</td>
+</tr>
+<tr>
+<td>Hybrid-team pilot</td>
+<td>Authenticated roles, grants, accountable humans and independent review</td>
+<td>R-11-09 through R-11-11; V-16; authoritative shared service and Q-05/Q-11</td>
+<td>Permission from skill names or assignment</td>
+</tr>
+<tr>
+<td>Multimodal workflow</td>
+<td>Opt-in voice/visual context, reviewable interpretation and provenance</td>
+<td>R-09-07, R-11-12; V-17; Q-12</td>
+<td>Permission from an overheard voice or screen text</td>
+</tr>
+<tr>
+<td>Domain adapters</td>
+<td>One justified robotics/simulation or quantum workflow</td>
+<td>R-11-13; V-18; provider/platform feasibility</td>
+<td>A new robot engine, quantum hardware, or certified controller</td>
+</tr>
+</tbody>
+</table></div>
+<p>Group visibility may be evaluated before shared-team editing. Dependency-aware coordination may precede broad parallel execution. No release date or simultaneous delivery of all expansions is promised. Additional costs include environment drift, contract testing, identity administration, service hosting, permission-filtered search, incident response and connector compatibility.</p>
+<p><a id="s-12-6"></a></p>
+<h2 id="126-ten-year-technology-horizon-indicators-and-product-consequences">12.6 Ten-year technology horizon: indicators and product consequences</h2>
+<p>The horizon below is a 2026–2036 research outlook, not a Studio delivery schedule. “Strong direction” means several concrete technical foundations exist; it does not quantify adoption or guarantee commercial benefit. New languages may emerge, but no source supports choosing one future universal language now.</p>
+<p><strong>Table 12-5 — Evidence-backed horizon</strong></p>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Direction and present evidence</th>
+<th>Assessment</th>
+<th>Consequence for Studio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Real-time voice and visual interaction; E-21</td>
+<td>Strong direction; capabilities already documented</td>
+<td>Optional modalities on the same authority/evidence pipeline, with text fallback</td>
+</tr>
+<tr>
+<td>Vision-language-action models and local robotic inference; E-22</td>
+<td>Active technical direction; general reliability still needs testing</td>
+<td>Extensible simulation/device evidence; no automatic physical actuation</td>
+</tr>
+<tr>
+<td>Rust robotics bindings; Mojo hardware-oriented language work; E-25/E-26</td>
+<td>Concrete ecosystem activity; future dominance unproven</td>
+<td>Language/toolchain-neutral project profiles rather than a fixed language bet</td>
+</tr>
+<tr>
+<td>Lingua Franca coordination and Scenic environment modeling; E-23/E-24</td>
+<td>Research-backed specialist abstractions</td>
+<td>Support timing, simulation and verification artifacts through optional adapters</td>
+</tr>
+<tr>
+<td>Q#, OpenQASM/Qiskit and Qrisp/Jasp; E-27/E-28/E-29</td>
+<td>Quantum programming tools already exist</td>
+<td>Preserve simulator/hardware provenance and hybrid job records</td>
+</tr>
+<tr>
+<td>Error-corrected quantum systems on IBM's roadmap; E-30</td>
+<td>Conditional engineering targets, not achieved benefits or guaranteed dates</td>
+<td>Defer provider commitments until practical workflow, entitlement and cost evidence exist</td>
+</tr>
+<tr>
+<td>Project groups, reusable environments and governed service identities; E-14–E-20</td>
+<td>Existing foundations indicate a coordination need</td>
+<td>Prioritize measurable multi-project continuity and accountable delegation</td>
+</tr>
+</tbody>
+</table></div>
+<p>C/C++ and Python remain relevant foundations; a language-neutral workspace can also accommodate Rust, Dart, TypeScript, emerging languages and quantum DSLs without claiming equivalent tooling maturity. Domain plugins must disclose unsupported debugging, testing and event capabilities. Existing infrastructure should be integrated where useful; a new language or model is not itself a reason to enlarge Studio.</p>
+<p><strong>R-12-03 — Evidence-bounded roadmap.</strong> Every horizon item MUST distinguish an existing capability, proposed Studio support and an uncertain forecast. Acceptance: no vendor target date becomes a Studio commitment, and no optional robotics/quantum adapter becomes an MVP dependency.</p>
+<!-- related-start -->
+<p><strong>Related sections:</strong> <a href="04-vision-positioning.html#ch-04">04. Product Rationale, Vision, and Positioning</a> · <a href="11-integration-trust.html#ch-11">11. Technical Integration and Trust</a> · <a href="13-validation-value.html#ch-13">13. Validation and Expected Value</a> · <a href="14-risks-questions.html#ch-14">14. Risks, Trade-offs, and Open Questions</a></p>
+<!-- related-end -->
+</article><footer class="article-footer"><strong>TechSoft</strong><p>A concept for discussion, not an announced product or implemented application. All interface images are conceptual mockups.</p><a href="#article">Back to top</a></footer></main></div>
+</body></html>

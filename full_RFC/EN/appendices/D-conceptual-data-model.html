@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Codex Studio: a project-centric engineering workspace proposal by TechSoft. Read the selected article and the bilingual Full Product Concept RFC."><meta name="author" content="TechSoft"><meta name="color-scheme" content="light dark">
+<title>Appendix D. Conceptual Data Model — TechSoft</title>
+<link rel="stylesheet" href="../../../assets/reader.css"><script defer src="../../../assets/reader.js"></script>
+</head>
+<body class="reference-page"><a class="skip-link" href="#article">Skip to content</a>
+<header class="site-header"><a class="brand" href="../../../index.html" dir="ltr"><strong>TechSoft</strong><span>Codex Studio</span></a><nav aria-label="Main navigation"><a href="../../../index.html">Article EN</a><a href="../../../ar.html">Article AR</a><a href="../index.html">RFC EN</a><a href="../../AR/index.html">RFC AR</a><a href="../../../gallery.html">Mockups</a><a href="../../../overview.html">Overview</a><a href="https://github.com/techsoftye/CodexStudio-" rel="noopener noreferrer">GitHub</a></nav></header>
+<div class="layout"><aside class="toc-panel"><details open><summary>On this page</summary><ol><li class="level-2"><a href="#d1-model-status-and-identity">D.1 Model status and identity</a></li><li class="level-2"><a href="#d2-core-entities">D.2 Core entities</a></li><li class="level-2"><a href="#d3-supporting-records">D.3 Supporting records</a></li><li class="level-2"><a href="#d4-cardinalities-and-navigation">D.4 Cardinalities and navigation</a></li><li class="level-2"><a href="#d5-consistency-invariants">D.5 Consistency invariants</a></li><li class="level-2"><a href="#d6-concrete-consistency-example">D.6 Concrete consistency example</a></li><li class="level-2"><a href="#d7-deletion-export-and-deferred-concerns">D.7 Deletion, export and deferred concerns</a></li><li class="level-2"><a href="#d8-group-and-hybrid-team-extension">D.8 Group and hybrid-team extension</a></li></ol></details><div class="toc-note">15 chapters · 5 appendices · EN / AR</div></aside>
+<main id="article" class="reader"><div class="eyebrow">An independent proposal by TechSoft · Review draft</div><div class="toolbar"><button type="button" id="wide-toggle" aria-pressed="false">Wide view</button><button type="button" id="theme-toggle">Theme</button><button type="button" id="print-button">Print</button><a href="../../AR/appendices/D-conceptual-data-model.html" class="button">العربية</a><a class="source-link" href="D-conceptual-data-model.md">Markdown</a></div><article><p><a id="app-d"></a></p>
+<h1 id="appendix-d-conceptual-data-model">Appendix D. Conceptual Data Model</h1>
+<p><a id="s-d-1"></a></p>
+<h2 id="d1-model-status-and-identity">D.1 Model status and identity</h2>
+<p>This is a conceptual domain model for Studio, not a physical SQL schema, migration, finalized API or claim about OpenAI storage. Field groups indicate information that must be represented; implementations may normalize or combine records while preserving invariants.</p>
+<p>All Studio records have a stable identity, project or group boundary where applicable, schema version, creation metadata and revision. Mutable records use optimistic concurrency. Runtime IDs include host/runtime identity. Dates of events include an unambiguous time basis; a task due date is a calendar date with display timezone and does not imply scheduling.</p>
+<p><a id="s-d-2"></a></p>
+<h2 id="d2-core-entities">D.2 Core entities</h2>
+<p><strong>Table D-1 — Core entity responsibilities</strong></p>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Entity</th>
+<th>Essential information</th>
+<th>Relations and lifecycle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Project</td>
+<td>Name, root bindings, owner/access context, settings revision</td>
+<td>Owns conversations, tasks, stages, sections, decisions, rules and file associations</td>
+</tr>
+<tr>
+<td>Conversation</td>
+<td>Project, title, supported runtime reference, source availability</td>
+<td>Contains message references; may originate multiple tasks and decisions</td>
+</tr>
+<tr>
+<td>Task</td>
+<td>Title, description/criteria, priority, status, date, skill selections, revision</td>
+<td>One project; optional Stage/Section/Parent; many attempts and applicable decisions</td>
+</tr>
+<tr>
+<td>Stage</td>
+<td>Project, name, ordering, archived state</td>
+<td>Has zero or more Sections and Tasks</td>
+</tr>
+<tr>
+<td>Section</td>
+<td>Project, Stage, name, ordering, archived state</td>
+<td>Belongs to exactly one Stage; groups Tasks</td>
+</tr>
+<tr>
+<td>Decision</td>
+<td>Question, choice, rationale, scope, status, approved version</td>
+<td>Many task links; source references; optional successor</td>
+</tr>
+<tr>
+<td>DecisionVersion</td>
+<td>Immutable wording/scope, sources, approval actor/time when approved</td>
+<td>Historical versions retained by manifests and reviews</td>
+</tr>
+<tr>
+<td>Rule</td>
+<td>Guidance reference, authority kind, scope, source version/hash</td>
+<td>Repository-backed or explicitly approved Studio source; optional Decision relation</td>
+</tr>
+<tr>
+<td>ExecutionAttempt</td>
+<td>Task/version, intent key, lifecycle, target, runtime refs, predecessor</td>
+<td>One context manifest; zero or more turns/events; zero or one logical Result</td>
+</tr>
+<tr>
+<td>Result</td>
+<td>Attempt, outcome, summary, unresolved findings, current version</td>
+<td>Versions bind changes/checks/files; many review events</td>
+</tr>
+<tr>
+<td>FileReference</td>
+<td>Source kind, locator, project access context, display name</td>
+<td>Has versions and project/session/task/result associations</td>
+</tr>
+<tr>
+<td>FileVersion</td>
+<td>Immutable content identity or explicit external revision, hash when obtainable</td>
+<td>Evidence links bind exact version; availability is recorded separately</td>
+</tr>
+</tbody>
+</table></div>
+<p>An attempt may have no result while queued or unobservable. Once summarized, it owns one logical result with version history. Manual task completion is supported by a CompletionRecord; it does not fabricate an ExecutionAttempt.</p>
+<p><a id="s-d-3"></a></p>
+<h2 id="d3-supporting-records">D.3 Supporting records</h2>
+<p><strong>Table D-2 — Supporting records and why they exist</strong></p>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Record</th>
+<th>Key information</th>
+<th>Consistency role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TaskVersion</td>
+<td>Captured title, description/criteria and relevant task settings</td>
+<td>Immutable execution/review subject; current Task points to a revision</td>
+</tr>
+<tr>
+<td>ResultVersion</td>
+<td>Outcome, summary and exact evidence links at one revision</td>
+<td>Reviews bind this version; additions create a new version</td>
+</tr>
+<tr>
+<td>SourceReference</td>
+<td>Source type, message/file locator, revision, captured excerpt if needed</td>
+<td>Distinguishes native reference from captured fallback</td>
+</tr>
+<tr>
+<td>TaskDecisionLink</td>
+<td>Task, decision, applicability note</td>
+<td>Many-to-many reuse without copying decision text</td>
+</tr>
+<tr>
+<td>ContextManifest</td>
+<td>Task version, instruction/decision/file versions, inclusion modes, reasons, omissions, resolver version</td>
+<td>Immutable record of supplied context</td>
+</tr>
+<tr>
+<td>ContextAmendment</td>
+<td>Manifest, steering event, changed inputs, time</td>
+<td>Preserves original context while describing continuation</td>
+</tr>
+<tr>
+<td>ExecutionIntent</td>
+<td>Action key, target, authorized scope, dispatch/acknowledgement observations</td>
+<td>Reconciles uncertain dispatch without blind retry</td>
+</tr>
+<tr>
+<td>RuntimeEventReference</td>
+<td>Host, thread/turn/item/event identifiers where available, raw source, observation time</td>
+<td>Attribution and deduplication with explicit gaps</td>
+</tr>
+<tr>
+<td>CodeSnapshot</td>
+<td>Repository identity, base revision, preexisting state, patch/content hashes and exclusions</td>
+<td>Exact code basis of evidence</td>
+</tr>
+<tr>
+<td>CheckRecord</td>
+<td>Check name/command, snapshot, environment, status, output, exit status</td>
+<td>Passed/Failed/Not Run/Inconclusive remains independent</td>
+</tr>
+<tr>
+<td>ReviewEvent</td>
+<td>Result version, reviewer, judgment, criteria mapping, exceptions</td>
+<td>Immutable acceptance subject</td>
+</tr>
+<tr>
+<td>CompletionRecord</td>
+<td>Task version, accepted results or manual evidence, actor, exceptions</td>
+<td>Explains Done without inventing execution</td>
+</tr>
+<tr>
+<td>ApprovalReference</td>
+<td>Runtime request, target/action scope, response, actor and validity</td>
+<td>Operation consent remains distinct from decision/review</td>
+</tr>
+<tr>
+<td>FileAssociation</td>
+<td>File/version, linked record, usage classification, conversation/project scope</td>
+<td>Project/Session views without duplicate bytes</td>
+</tr>
+<tr>
+<td>AvailabilityRecord</td>
+<td>File version, current access condition, reason/time</td>
+<td>Historical identity survives lawful content removal</td>
+</tr>
+<tr>
+<td>AuditEvent</td>
+<td>Actor, operation, subject/revision, time and correlation</td>
+<td>Inspectable history; not a claim of tamper-proof storage</td>
+</tr>
+</tbody>
+</table></div>
+<p><a id="s-d-4"></a></p>
+<h2 id="d4-cardinalities-and-navigation">D.4 Cardinalities and navigation</h2>
+<p><strong>Figure D-1 — Conceptual relationship map</strong></p>
+<pre><code class="language-text">Project 1 --- * Conversation --- * SourceReference
+Project 1 --- * Task
+Project 1 --- * Stage 1 --- * Section
+Task 0..1 --- Parent Task       (acyclic, same project)
+Task * --- * Decision --- * DecisionVersion
+Decision 0..1 --- successor Decision
+Rule --- authoritative SourceReference
+Task 1 --- * ExecutionAttempt 1 --- 1 ContextManifest
+ExecutionAttempt 1 --- * RuntimeEventReference
+ExecutionAttempt 1 --- 0..1 Result 1 --- * ResultVersion
+ResultVersion --- CodeSnapshot / CheckRecord / FileVersion
+ResultVersion 1 --- * ReviewEvent
+TaskVersion 1 --- * CompletionRecord
+FileReference 1 --- * FileVersion --- * FileAssociation
+</code></pre>
+<p>Stage and Section links on Task are optional; Section implies its Stage. Conversation ownership is not task ownership: multiple conversations can discuss one task, and a source message can create several tasks. TaskDecisionLink determines applicability; a context manifest pins the decision version actually supplied. A FileAssociation can expose a captured report in both project and session views while retaining one FileVersion.</p>
+<p><a id="s-d-5"></a></p>
+<h2 id="d5-consistency-invariants">D.5 Consistency invariants</h2>
+<p><strong>Table D-3 — Model invariants</strong></p>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Invariant</th>
+<th>Enforcement / review link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>INV-01</td>
+<td>Every relation respects project/access boundaries; external references remain explicitly external</td>
+<td>Service validation; R-04-01, R-11-07</td>
+</tr>
+<tr>
+<td>INV-02</td>
+<td>Parent links are acyclic and same-project</td>
+<td>Transactional ancestor validation; R-06-02</td>
+</tr>
+<tr>
+<td>INV-03</td>
+<td>Section belongs to selected Stage in the same project</td>
+<td>Clear incompatible links on change; R-06-02</td>
+</tr>
+<tr>
+<td>INV-04</td>
+<td>Approved decision versions cannot be overwritten; supersession is acyclic and preserves predecessor</td>
+<td>Atomic approval transaction; R-07-02</td>
+</tr>
+<tr>
+<td>INV-05</td>
+<td>No task state, result outcome, check state or review state is inferred solely from another dimension</td>
+<td>Explicit transitions; R-06-03, R-08-01</td>
+</tr>
+<tr>
+<td>INV-06</td>
+<td>An accepted review binds an exact result version and task criteria</td>
+<td>Append-only review; R-08-05</td>
+</tr>
+<tr>
+<td>INV-07</td>
+<td>Checks and diffs bind a recorded code snapshot or disclose the missing binding</td>
+<td>Evidence validation; R-08-02, R-08-03</td>
+</tr>
+<tr>
+<td>INV-08</td>
+<td>Re-run creates a new attempt; uncertain launch cannot auto-create another dispatch</td>
+<td>Intent key and reconciliation; R-08-04, R-11-02</td>
+</tr>
+<tr>
+<td>INV-09</td>
+<td>Original context manifests remain immutable; changes use amendments/new attempts</td>
+<td>Versioned context; R-10-01, R-10-04</td>
+</tr>
+<tr>
+<td>INV-10</td>
+<td>Rule projections cannot become competing authoritative copies</td>
+<td>Source-aware edit flow; R-07-03</td>
+</tr>
+<tr>
+<td>INV-11</td>
+<td>Removing a file association does not delete its content or erase review history</td>
+<td>Separate retention action; R-09-05</td>
+</tr>
+<tr>
+<td>INV-12</td>
+<td>Revocation/deletion invalidates future retrieval and caches</td>
+<td>Access checks and invalidation; R-09-06, R-10-03</td>
+</tr>
+<tr>
+<td>INV-13</td>
+<td>Done requires a CompletionRecord; manual completion does not create false tests or attempts</td>
+<td>Completion guard; R-06-04</td>
+</tr>
+<tr>
+<td>INV-14</td>
+<td>ApprovalReference cannot substitute for Decision approval or ReviewEvent</td>
+<td>Separate operations; R-07-06, R-11-04</td>
+</tr>
+<tr>
+<td>INV-15</td>
+<td>Record mutation, revision increment and audit entry commit consistently</td>
+<td>Transaction and recovery; R-11-03, R-11-05</td>
+</tr>
+</tbody>
+</table></div>
+<p><a id="s-d-6"></a></p>
+<h2 id="d6-concrete-consistency-example">D.6 Concrete consistency example</h2>
+<p>In Appendix C, T-103 v1 links D-07. CM-21 pins D-07 v1 and the exact rule/file versions. X-21 owns S-21, whose checks bind K-21-result. S-21 remains Partial and Changes Requested. X-22 owns S-22; accepting S-22 creates a ReviewEvent and a CompletionRecord for T-103. If successor D-08 v1 later replaces D-07, CM-21 and S-22 still explain their historical basis; new work selects the current approved successor.</p>
+<p>A later edit to S-22's substantive evidence creates ResultVersion v2. The earlier ReviewEvent still accepts v1, so the UI shows v2 as needing review. This prevents an accepted badge from silently covering changed evidence.</p>
+<p><a id="s-d-7"></a></p>
+<h2 id="d7-deletion-export-and-deferred-concerns">D.7 Deletion, export and deferred concerns</h2>
+<p>Archive is a visibility decision; deletion is a retention/access decision. References needed to explain accepted work retain lawful metadata and availability tombstones if content must be removed. Referential integrity must not be implemented as blind cascading deletion of evidence. Export preserves IDs, versions, link types and declared omissions.</p>
+<p>Physical indexing, encryption technology, blob layout, compression, full-text/vector search and sync algorithms remain implementation choices. They do not excuse undefined domain behavior. The MVP needs correct identity, versioning and recovery before sophisticated retrieval or distributed editing.</p>
+<p><a id="s-d-8"></a></p>
+<h2 id="d8-group-and-hybrid-team-extension">D.8 Group and hybrid-team extension</h2>
+<p>These entities are post-MVP extensions. Project-owned entities above remain valid. A scoped record has exactly one owner scope, Project or Project Group; references to member projects are explicit authorized associations. Decisions and source references may be group-owned; Tasks and ExecutionAttempts remain project-owned. All access is checked against current membership and policy, while historical manifests preserve the versions used.</p>
+<p><strong>Table D-4 — Extension records</strong></p>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Entity</th>
+<th>Essential information</th>
+<th>Relationships and constraint</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ProjectGroup</td>
+<td>Name, accountable owner, revision, archive state</td>
+<td>Flat group; no nested groups in the first expansion</td>
+</tr>
+<tr>
+<td>GroupMembership</td>
+<td>Group, Project, joining/ending revision and authorized actor</td>
+<td>Many-to-many; one active edge per pair; no automatic access inheritance</td>
+</tr>
+<tr>
+<td>EnvironmentProfile / EnvironmentProfileVersion</td>
+<td>Project, host/roots, toolchains, configuration/secret references, validation status</td>
+<td>One Project to many profiles; attempts pin immutable profile versions</td>
+</tr>
+<tr>
+<td>ChangeSet</td>
+<td>Group, outcome, coordinator Project, phase, required member tasks</td>
+<td>Group 1 to many ChangeSets; tasks retain one owning Project</td>
+</tr>
+<tr>
+<td>DependencyLink</td>
+<td>Producer/consumer task or contract, required version and satisfaction predicate</td>
+<td>Scoped graph; cycles require an explicit reviewed plan</td>
+</tr>
+<tr>
+<td>ContractReference / ProjectAcknowledgment</td>
+<td>Producer, authoritative source/version, affected consumer Project, acknowledging actor</td>
+<td>One contract version to many consumer acknowledgments; no copied authority</td>
+</tr>
+<tr>
+<td>IntegrationManifest</td>
+<td>ChangeSet, member snapshots, profiles, contract versions, checks and review subject</td>
+<td>Immutable; aggregate assessment derives from an exact revision set</td>
+</tr>
+<tr>
+<td>IntegrationAssessment / IntegrationReview</td>
+<td>Assessment version, ChangeSet, exact manifest/result versions, criteria, reviewer and exceptions</td>
+<td>Group-owned; immutable review binds one assessment version; agent findings cannot create human acceptance</td>
+</tr>
+<tr>
+<td>Principal / AgentInstance</td>
+<td>Principal kind and identity provider; agent instance/runtime identity and accountable human</td>
+<td>Each running agent has a declared credential principal; model name is metadata</td>
+</tr>
+<tr>
+<td>RoleBinding / PolicyVersion</td>
+<td>Principal, scoped role, allowed actions and explicit denies, revision</td>
+<td>Deny wins in Studio; provider policy remains independently enforced</td>
+</tr>
+<tr>
+<td>WorkAssignment</td>
+<td>Task, accountable human, executor/reviewer references, revision/validity</td>
+<td>Responsibility only; cannot substitute for a grant</td>
+</tr>
+<tr>
+<td>DelegationGrant</td>
+<td>Issuer, subject, parent grant, purpose, scopes, environment, validity and limits</td>
+<td>Parent chain acyclic; child authority cannot exceed parent</td>
+</tr>
+<tr>
+<td>MediaSourceReference</td>
+<td>Capture identity, media version/time range, transcript/interpretation, consent/retention</td>
+<td>Extends SourceReference; permissions and uncertainty preserved</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Table D-5 — Additional invariants</strong></p>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Invariant</th>
+<th>Requirement links</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>INV-16</td>
+<td>Group visibility never implies access to member code, secrets or hidden counts</td>
+<td>R-04-04, R-05-07</td>
+</tr>
+<tr>
+<td>INV-17</td>
+<td>Attempts pin one member Project and profile; shared plans cannot retarget a running attempt</td>
+<td>R-10-07</td>
+</tr>
+<tr>
+<td>INV-18</td>
+<td>Integrated acceptance binds exact member snapshots and satisfied dependency versions</td>
+<td>R-07-07, R-10-08</td>
+</tr>
+<tr>
+<td>INV-19</td>
+<td>Assignment does not grant authority; delegation is bounded, attributable and revocable</td>
+<td>R-06-07, R-11-09, R-11-11</td>
+</tr>
+<tr>
+<td>INV-20</td>
+<td>Agent recommendation is distinct from human acceptance and enforced independence</td>
+<td>R-11-10</td>
+</tr>
+<tr>
+<td>INV-21</td>
+<td>Media/simulation/provider output preserves origin, modality and execution class</td>
+<td>R-09-07, R-11-12, R-11-13</td>
+</tr>
+</tbody>
+</table></div>
+<p>GroupMembership removal updates future selection and cache authorization but does not cascade-delete evidence. A Project in several groups can face conflicting shared guidance; it must resolve applicable policy explicitly rather than combine group roles blindly. A first pilot can restrict a Project to one group while retaining the association model; Q-10 decides the supported policy.</p>
+<p>A shared team service owns authorization and consistent updates; clients hold cache projections only. Offline changes may remain unapproved drafts, but offline clients cannot mint new authoritative approvals or grants against an unknown current policy. Reconnection checks revision, identity and membership before accepting writes. This requires a new deployment/security design beyond copying the local MVP database.</p>
+<!-- related-start -->
+<p><strong>Related sections:</strong> <a href="../chapters/06-tasks-planning.html#ch-06">06. Tasks and Development Planning</a> · <a href="../chapters/07-decisions-rules.html#ch-07">07. Engineering Decisions and Project Rules</a> · <a href="../chapters/08-results-evidence.html#ch-08">08. Execution Results and Evidence</a> · <a href="../chapters/09-library-resources.html#ch-09">09. Project Library and Resources</a> · <a href="../chapters/10-context-orchestration.html#ch-10">10. Context, Memory, and Agent Orchestration</a> · <a href="../chapters/11-integration-trust.html#ch-11">11. Technical Integration and Trust</a></p>
+<!-- related-end -->
+</article><footer class="article-footer"><strong>TechSoft</strong><p>A concept for discussion, not an announced product or implemented application. All interface images are conceptual mockups.</p><a href="#article">Back to top</a></footer></main></div>
+</body></html>

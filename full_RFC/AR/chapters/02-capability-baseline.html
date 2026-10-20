@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Codex Studio: a project-centric engineering workspace proposal by TechSoft. Read the selected article and the bilingual Full Product Concept RFC."><meta name="author" content="TechSoft"><meta name="color-scheme" content="light dark">
+<title>02. واقع المنتجات الحالية وخط أساس القدرات — TechSoft</title>
+<link rel="stylesheet" href="../../../assets/reader.css"><script defer src="../../../assets/reader.js"></script>
+</head>
+<body class="reference-page"><a class="skip-link" href="#article">تجاوز إلى المحتوى</a>
+<header class="site-header"><a class="brand" href="../../../index.html" dir="ltr"><strong>TechSoft</strong><span>Codex Studio</span></a><nav aria-label="التنقل الرئيسي"><a href="../../../index.html">المقال EN</a><a href="../../../ar.html">المقال AR</a><a href="../../EN/index.html">RFC EN</a><a href="../index.html">RFC AR</a><a href="../../../gallery.html">الصور</a><a href="../../../overview.html">المستودع</a><a href="https://github.com/techsoftye/CodexStudio-" rel="noopener noreferrer">GitHub</a></nav></header>
+<div class="layout"><aside class="toc-panel"><details open><summary>محتويات الصفحة</summary><ol><li class="level-2"><a href="#021-منهج-التحقق">02.1 منهج التحقق</a></li><li class="level-2"><a href="#022-الأسس-القائمة">02.2 الأسس القائمة</a></li><li class="level-2"><a href="#023-خط-أساس-التكامل">02.3 خط أساس التكامل</a></li><li class="level-2"><a href="#024-التداخل-ومصدر-السلطة">02.4 التداخل ومصدر السلطة</a></li><li class="level-2"><a href="#025-ما-لم-يتحقق-منه">02.5 ما لم يُتحقق منه</a></li><li class="level-2"><a href="#026-أسس-قائمة-للمظلة-والعمل-الجماعي">02.6 أسس قائمة للمظلة والعمل الجماعي</a></li></ol></details><div class="toc-note">15 فصلًا · 5 ملاحق · EN / AR</div></aside>
+<main id="article" class="reader"><div class="eyebrow">مقترح مستقل من TechSoft · مسودة للمراجعة</div><div class="toolbar"><button type="button" id="wide-toggle" aria-pressed="false">عرض واسع</button><button type="button" id="theme-toggle">المظهر</button><button type="button" id="print-button">طباعة</button><a href="../../EN/chapters/02-capability-baseline.html" class="button">English</a><a class="source-link" href="02-capability-baseline.md">Markdown</a></div><article><p><a id="ch-02"></a></p>
+<h1 id="02-واقع-المنتجات-الحالية-وخط-أساس-القدرات">02. واقع المنتجات الحالية وخط أساس القدرات</h1>
+<p><a id="s-02-1"></a></p>
+<h2 id="021-منهج-التحقق">02.1 منهج التحقق</h2>
+<p>جرى التحقق من خط الأساس عبر الوثائق الرسمية بتاريخ <strong>2026-10-18</strong>. يحدد الملحق E الروابط النهائية والادعاءات المدعومة وحدود الاستدلال؛ ويربط الملحق B كل قدرة بإضافة Studio المقترحة. يثبت التوثيق وصفًا عامًا في تاريخ التحقق، وليس التوفر لجميع الحسابات أو تكاملًا مختبرًا على هذا الجهاز. لا تستخدم الوثيقة مسوداتها أو تصاميمها أو أسماء ملفاتها دليلًا على سلوك منتج مطروح.</p>
+<p>تُستخدم ثلاثة تصنيفات ثابتة: <strong>Existing — قائم</strong> يعني أن مصدرًا رسميًا مفتوحًا يدعمه؛ <strong>Proposed — مقترح</strong> يعني سلوكًا تحدده هذه الوثيقة؛ <strong>Requires Validation — يتطلب تحققًا</strong> يعني أن الأدلة المتاحة لا تثبت السلوك أو الضمان المطلوب. قد يجمع صف واحد التصنيفات الثلاثة. ولا يُعد عدم العثور على توثيق دليلًا على غياب ميزة.</p>
+<p><a id="s-02-2"></a></p>
+<h2 id="022-الأسس-القائمة">02.2 الأسس القائمة</h2>
+<p>تعرض وثائق التطبيق المكتبي خياري ChatGPT وCodex، مع Chat وWork داخل ChatGPT. يمكن للمشاريع تنظيم العمل المترابط، وتربط المشاريع المحلية العمل بالمجلدات. يستهدف Work مخرجات أوسع ويتداخل في الملفات والنتائج القابلة للمراجعة. هذه أسس قائمة وليست ابتكارات Studio. <a href="https://learn.chatgpt.com/docs/app" rel="noopener noreferrer">E-01</a>، <a href="https://learn.chatgpt.com/docs/projects" rel="noopener noreferrer">E-02</a>، <a href="https://learn.chatgpt.com/docs/get-started-with-work" rel="noopener noreferrer">E-11</a>.</p>
+<p>توثق صفحات رسمية مستقلة Worktrees ومراجعة الكود والمهام المجدولة. يجب تقييم هذه المسارات قبل إضافة ضوابط منافسة. ويظل تاريخ الاستحقاق في مهمة Studio بيانات للتخطيط، دون أن ينشئ جدول تشغيل تلقائيًا. <a href="https://learn.chatgpt.com/docs/environments/git-worktrees" rel="noopener noreferrer">E-07</a>، <a href="https://learn.chatgpt.com/docs/code-review" rel="noopener noreferrer">E-08</a>، <a href="https://learn.chatgpt.com/docs/automations" rel="noopener noreferrer">E-09</a>.</p>
+<p>يملك Codex أيضًا ذاكرة محلية، واكتشافًا للتعليمات عبر <code>AGENTS.md</code>، وتحميل المهارات، ومسارات للوكلاء الفرعيين. إضافة Studio هي الربط المقترح بالنطاق والاعتماد والإصدار والأدلة حول المواد ذات الصلة. ولا يجوز له الادعاء بأنه يقدم الذاكرة أو ملفات التعليمات أو التفويض لأول مرة. <a href="https://learn.chatgpt.com/docs/customization/memories" rel="noopener noreferrer">E-03</a>، <a href="https://learn.chatgpt.com/docs/agent-configuration/agents-md" rel="noopener noreferrer">E-04</a>، <a href="https://learn.chatgpt.com/docs/build-skills" rel="noopener noreferrer">E-05</a>، <a href="https://learn.chatgpt.com/docs/agent-configuration/subagents" rel="noopener noreferrer">E-10</a>.</p>
+<p><a id="s-02-3"></a></p>
+<h2 id="023-خط-أساس-التكامل">02.3 خط أساس التكامل</h2>
+<p>توثق App Server واجهة عميل تتضمن threads وturns وitems وأحداثًا متدفقة وموافقات. وتفرق إرشادات التكامل العامة بين App Server وCodex SDK والتنفيذ غير التفاعلي. تدعم هذه المصادر استقصاء إعادة الاستخدام، لكنها لا تثبت كيانات Studio المقترحة أو عقد الاستعادة أو الإذن بإعادة استخدام كل مكون مكتبي خاص. <a href="https://learn.chatgpt.com/docs/app-server" rel="noopener noreferrer">E-06</a>، <a href="https://developers.openai.com/blog/codex-as-a-platform" rel="noopener noreferrer">E-12</a>.</p>
+<p>يقترح الفصل 11 موائمًا فوق بيئة التنفيذ المدعومة. عقده تصميم خاص بـStudio. إرجاع موصل لمعرّف محادثة لا يثبت أن Studio يستطيع قراءة جميع المحادثات السابقة، ومسار الملف المحلي لا يثبت الوصول بين الأجهزة. يجب أن يكتشف الموائم القدرات الفعلية وأن يوضح تقييد الوظائف عند غيابها.</p>
+<p><a id="s-02-4"></a></p>
+<h2 id="024-التداخل-ومصدر-السلطة">02.4 التداخل ومصدر السلطة</h2>
+<p><strong>الجدول 02-1 — تقييم حدود المنتجات</strong></p>
+<div aria-label="جدول قابل للتمرير" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>السطح</th>
+<th>المسؤولية القائمة أو الخارجية</th>
+<th>مقترح Studio</th>
+<th>الحد الذي يحتاج مراجعة</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>بيئة تنفيذ Codex</td>
+<td>تنفيذ الوكيل والضوابط المهيأة</td>
+<td>إسناد التنفيذ إلى المهمة وإصدارات السياق</td>
+<td>الأحداث المتاحة وتسوية حالة العمل المتوقف</td>
+</tr>
+<tr>
+<td>التطبيق المكتبي الحالي</td>
+<td>تجربة المشاريع والمحادثات</td>
+<td>سجلات هندسية مترابطة عبر العروض الستة</td>
+<td>التكرار وتكلفة التنقل</td>
+</tr>
+<tr>
+<td>ChatGPT Work</td>
+<td>مسارات المخرجات العامة</td>
+<td>القبول الهندسي وأدلة الكود</td>
+<td>المكونات المشتركة واختلاف احتياجات المنتج</td>
+</tr>
+<tr>
+<td>IDE ومسار Git</td>
+<td>التحرير وحالة الكود وعمليات المستودع</td>
+<td>فتح الدليل المحدد والمسارات الحالية بصورة مميزة</td>
+<td>التسليم الآمن وحفظ التغييرات غير المثبتة</td>
+</tr>
+<tr>
+<td>متتبع القضايا الحالي</td>
+<td>مرجعية العمل التي اختارها الفريق</td>
+<td>مرجع اختياري لقضية خارجية</td>
+<td>لا مزامنة ثنائية الاتجاه للحالة في MVP</td>
+</tr>
+</tbody>
+</table></div>
+<p>يوزع الجدول المسؤولية المقترحة، ولا يدعي افتقار متتبعات القضايا الخارجية إلى مفاهيم مماثلة. أُضيفت مقارنة وثائق محدودة في الإصدار 1.1؛ ولم تُجر تجربة مقارنة للمنتجات أو تدقيق لعقود المزودين. إذا استخدم المشروع متتبعًا قائمًا، يجب توضيح ما إذا كان السجل مملوكًا لـStudio أو مرجعًا خارجيًا. لا يجوز لروابط MVP تحديث الحالة الخارجية بصمت.</p>
+<p><a id="s-02-5"></a></p>
+<h2 id="025-ما-لم-يتحقق-منه">02.5 ما لم يُتحقق منه</h2>
+<p>لا يثبت خط الأساس العام الحالي النقل الكامل للجلسات إلى Studio مستقل، أو إعادة بث كل حدث فائت، أو إطلاقًا ذريًا يشمل تخزين Studio وبيئة التنفيذ، أو تطابق الواجهات بين جميع المضيفين، أو الوصول إلى الاستدلال الخاص. كما لا يثبت الإذن أو ضمانات الدعم أو شروط الترخيص أو تكلفة التوزيع المستقل. هذه موضوعات استقصاء صريحة وليست ادعاءات بغياب المزايا.</p>
+<p><strong>R-02-01 — تتبع الادعاءات.</strong> يجب ربط كل ادعاء بقدرة حالية بمصدر رسمي وتاريخ تحقق. معيار القبول: يستطيع المراجع تتبع كل صف لخط الأساس في الملحق B إلى الملحق E؛ وتبقى الضمانات غير المدعومة ضمن Requires Validation. لا يتحول سلوك مقترح إلى Existing لمجرد ظهوره في تصميم مقنع.</p>
+<p><a id="s-02-6"></a></p>
+<h2 id="026-أسس-قائمة-للمظلة-والعمل-الجماعي">02.6 أسس قائمة للمظلة والعمل الجماعي</h2>
+<p>يوثق Codex مشاريع محلية متعددة المجلدات، مع تمييز المجلد الأساسي الموضح في القسم 10.7. <a href="https://learn.chatgpt.com/docs/projects" rel="noopener noreferrer">E-02</a>. وتوثق Codex Cloud بيئات قابلة لإعادة الاستخدام تضم مستودعات وأدوات. <a href="https://learn.chatgpt.com/docs/cloud" rel="noopener noreferrer">E-17</a>. هذا تداخل قائم، وليس ادعاء جدة لـStudio.</p>
+<p>خارج Codex، توفر VS Code مساحات متعددة الجذور؛ وتنظم GitLab Groups المشاريع المترابطة والصلاحيات؛ وتصف dev containers بيئات تطوير قابلة لإعادة الإنشاء. <a href="https://code.visualstudio.com/docs/editing/workspaces/multi-root-workspaces" rel="noopener noreferrer">E-14</a>، <a href="https://docs.gitlab.com/user/group/" rel="noopener noreferrer">E-15</a>، <a href="https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers" rel="noopener noreferrer">E-16</a>. يحل تجميع المجلدات وحوكمة المشاريع وإعداد البيئة أجزاء مختلفة من المشكلة. ولا يثبت أي منها منفردًا توافق عقد Backend مع إصدارَي عميلين.</p>
+<p>توثق ChatGPT Teams وTeam Tasks عملًا مشتركًا وتنفيذًا بهوية خدمة؛ وتوثق أدوار المساحة واتحاد هوية الأحمال حدود وصول منفصلة. <a href="https://learn.chatgpt.com/docs/enterprise/teams" rel="noopener noreferrer">E-19</a>، <a href="https://learn.chatgpt.com/docs/enterprise/roles-and-workspace-permissions" rel="noopener noreferrer">E-18</a>، <a href="https://developers.openai.com/api/docs/guides/workload-identity-federation/federation-rules" rel="noopener noreferrer">E-20</a>. تدعم هذه الأسس استقصاء جدوى عمل البشر والوكلاء المحكوم، ولا تثبت مصفوفة Studio الدقيقة أو توفرًا متماثلًا في كل حساب.</p>
+<p>الإضافة المقترحة هي ربط المشاريع المستقلة الإعداد والعقود ذات الإصدارات والتفويض معلوم المسؤولية وأدلة القبول المدمج. يظل بناء هذا الربط أو دمجه أو تركه سؤال منتج مقارنًا. الاستثمار القائم مؤشر حاجة، وليس طلبًا مقاسًا لمنتج مكتبي إضافي.</p>
+<!-- related-start -->
+<p><strong>الأقسام المرتبطة:</strong> <a href="../appendices/B-capability-matrix.html#app-b">الملحق B. مصفوفة القدرات القائمة والمقترحة</a> · <a href="../appendices/E-references-evidence.html#app-e">الملحق E. المراجع والأدلة</a></p>
+<!-- related-end -->
+</article><footer class="article-footer"><strong>TechSoft</strong><p>تصور للنقاش، وليس منتجًا رسميًا أو تطبيقًا منفذًا. جميع الصور نماذج تصورية.</p><a href="#article">العودة للأعلى</a></footer></main></div>
+</body></html>

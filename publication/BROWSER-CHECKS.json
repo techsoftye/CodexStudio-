@@ -1,0 +1,218 @@
+{
+  "passed": true,
+  "scope": "In-memory visual rendering of the packaged HTML/CSS/JS and original image bytes; desktop/mobile EN/AR articles and RFC. File/HTTP navigation was blocked by the browser environment, so local-link resolution was checked separately by check_links.py. No GitHub deployment performed.",
+  "results": [
+    {
+      "page": "index.html",
+      "test": "article-en",
+      "images": [
+        {
+          "alt": "Concept mockup of the project Chat view in Codex Studio",
+          "loaded": true
+        },
+        {
+          "alt": "Concept mockup of Tasks with statuses and the Stages/Sections right sidebar",
+          "loaded": true
+        },
+        {
+          "alt": "Concept mockup of Decisions with approved records and the Rules panel",
+          "loaded": true
+        },
+        {
+          "alt": "Concept mockup of Results with run status, test evidence and linked changes",
+          "loaded": true
+        },
+        {
+          "alt": "Concept mockup of Library with Project Files, Session Files and file-type filters",
+          "loaded": true
+        }
+      ],
+      "dimensions": {
+        "vw": 1440,
+        "sw": 1440
+      },
+      "errors": [],
+      "failed_requests": [],
+      "wide_toggle": true,
+      "theme_toggle": "dark"
+    },
+    {
+      "page": "ar.html",
+      "test": "article-ar",
+      "images": [
+        {
+          "alt": "نموذج تصوري لواجهة محادثة المشروع في Codex Studio",
+          "loaded": true
+        },
+        {
+          "alt": "نموذج تصوري للمهام وحالاتها، مع مراحل المشروع وأقسامه في اللوحة اليمنى",
+          "loaded": true
+        },
+        {
+          "alt": "نموذج تصوري للقرارات، يتضمن سجلات معتمدة ولوحة القواعد",
+          "loaded": true
+        },
+        {
+          "alt": "نموذج تصوري للنتائج، يتضمن حالة التنفيذ وأدلة الاختبارات والتغييرات المرتبطة",
+          "loaded": true
+        },
+        {
+          "alt": "نموذج تصوري للمكتبة، يتضمن ملفات المشروع وملفات الجلسات وفلاتر أنواع الملفات",
+          "loaded": true
+        }
+      ],
+      "dimensions": {
+        "vw": 1440,
+        "sw": 1440
+      },
+      "errors": [],
+      "failed_requests": [],
+      "wide_toggle": true,
+      "theme_toggle": "dark"
+    },
+    {
+      "page": "full_RFC/EN/index.html",
+      "test": "rfc-en",
+      "images": [
+        {
+          "alt": "Figure A-01: Chat project workspace with sources and task promotion",
+          "loaded": true
+        },
+        {
+          "alt": "Figure A-02: Tasks grouped by status with Stages and Sections",
+          "loaded": true
+        },
+        {
+          "alt": "Figure A-03: New Task right-panel form",
+          "loaded": true
+        },
+        {
+          "alt": "Figure A-04: Decisions register and Project Rules",
+          "loaded": true
+        },
+        {
+          "alt": "Figure A-05: Results and execution evidence",
+          "loaded": true
+        },
+        {
+          "alt": "Figure A-06: Library project/session files and optional external sources",
+          "loaded": true
+        }
+      ],
+      "dimensions": {
+        "vw": 1440,
+        "sw": 1440
+      },
+      "errors": [],
+      "failed_requests": [],
+      "wide_toggle": true,
+      "theme_toggle": "dark"
+    },
+    {
+      "page": "full_RFC/AR/index.html",
+      "test": "rfc-ar",
+      "images": [
+        {
+          "alt": "الشكل A-01: مساحة محادثة المشروع والمصادر وتحويل عناصر إلى مهام",
+          "loaded": true
+        },
+        {
+          "alt": "الشكل A-02: المهام مجمعة بالحالة مع المراحل والأقسام",
+          "loaded": true
+        },
+        {
+          "alt": "الشكل A-03: نموذج المهمة الجديدة في اللوحة اليمنى",
+          "loaded": true
+        },
+        {
+          "alt": "الشكل A-04: سجل القرارات وقواعد المشروع",
+          "loaded": true
+        },
+        {
+          "alt": "الشكل A-05: النتائج وأدلة التنفيذ",
+          "loaded": true
+        },
+        {
+          "alt": "الشكل A-06: ملفات المشروع والجلسة والمصادر الخارجية الاختيارية",
+          "loaded": true
+        }
+      ],
+      "dimensions": {
+        "vw": 1440,
+        "sw": 1440
+      },
+      "errors": [],
+      "failed_requests": [],
+      "wide_toggle": true,
+      "theme_toggle": "dark"
+    },
+    {
+      "page": "index.html",
+      "test": "article-mobile",
+      "images": [
+        {
+          "alt": "Concept mockup of the project Chat view in Codex Studio",
+          "loaded": true
+        },
+        {
+          "alt": "Concept mockup of Tasks with statuses and the Stages/Sections right sidebar",
+          "loaded": true
+        },
+        {
+          "alt": "Concept mockup of Decisions with approved records and the Rules panel",
+          "loaded": true
+        },
+        {
+          "alt": "Concept mockup of Results with run status, test evidence and linked changes",
+          "loaded": true
+        },
+        {
+          "alt": "Concept mockup of Library with Project Files, Session Files and file-type filters",
+          "loaded": true
+        }
+      ],
+      "dimensions": {
+        "vw": 390,
+        "sw": 390
+      },
+      "errors": [],
+      "failed_requests": [],
+      "wide_toggle": true,
+      "theme_toggle": "dark"
+    },
+    {
+      "page": "ar.html",
+      "test": "article-ar-mobile",
+      "images": [
+        {
+          "alt": "نموذج تصوري لواجهة محادثة المشروع في Codex Studio",
+          "loaded": true
+        },
+        {
+          "alt": "نموذج تصوري للمهام وحالاتها، مع مراحل المشروع وأقسامه في اللوحة اليمنى",
+          "loaded": true
+        },
+        {
+          "alt": "نموذج تصوري للقرارات، يتضمن سجلات معتمدة ولوحة القواعد",
+          "loaded": true
+        },
+        {
+          "alt": "نموذج تصوري للنتائج، يتضمن حالة التنفيذ وأدلة الاختبارات والتغييرات المرتبطة",
+          "loaded": true
+        },
+        {
+          "alt": "نموذج تصوري للمكتبة، يتضمن ملفات المشروع وملفات الجلسات وفلاتر أنواع الملفات",
+          "loaded": true
+        }
+      ],
+      "dimensions": {
+        "vw": 390,
+        "sw": 390
+      },
+      "errors": [],
+      "failed_requests": [],
+      "wide_toggle": true,
+      "theme_toggle": "dark"
+    }
+  ]
+}

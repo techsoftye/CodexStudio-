@@ -1,0 +1,53 @@
+{
+  "date": "2026-10-18",
+  "images": [
+    {
+      "file": "assets/01-chat-project-workspace.png",
+      "source": "05-Images/01-chat-project-workspace.png",
+      "width": 1672,
+      "height": 941,
+      "sha256": "70e8febae0dcf0c090ce2fbc2bc2c5dadbe85547e8978b9ba010df05a9e47f2c",
+      "unchanged": true
+    },
+    {
+      "file": "assets/02-tasks-stages-sections.png",
+      "source": "05-Images/02-tasks-stages-sections.png",
+      "width": 1672,
+      "height": 941,
+      "sha256": "501ed40ff34171542a15ecfdc224d2f536f2cbe0eef8bfedc0dbea1f84fc29ae",
+      "unchanged": true
+    },
+    {
+      "file": "assets/03-tasks-new-task-form.png",
+      "source": "05-Images/03-tasks-new-task-form.png",
+      "width": 1672,
+      "height": 941,
+      "sha256": "2045682fba143e1a480b0c27349b575da2bd0b1aad152fb71dbf75c5d481aafe",
+      "unchanged": true
+    },
+    {
+      "file": "assets/04-decisions-project-rules.png",
+      "source": "05-Images/04-decisions-project-rules.png",
+      "width": 1672,
+      "height": 941,
+      "sha256": "6ae12ba4138becd58707937524ea6b6d28fe05a9a33c9cf7b2e393f83bb1e552",
+      "unchanged": true
+    },
+    {
+      "file": "assets/05-results-execution-evidence.png",
+      "source": "05-Images/05-results-execution-evidence.png",
+      "width": 1672,
+      "height": 941,
+      "sha256": "bc710484f9d870c7200504d49f39f2d7bd07cf611bc800d1a53b29d5b97f9484",
+      "unchanged": true
+    },
+    {
+      "file": "assets/06-library-files-external-sources.png",
+      "source": "05-Images/06-library-files-external-sources.png",
+      "width": 1672,
+      "height": 941,
+      "sha256": "f640a9c711dc1cfc6c8eb519aab80e4a41963d65413e1252ccfe745532133391",
+      "unchanged": true
+    }
+  ]
+}

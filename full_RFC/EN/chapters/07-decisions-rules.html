@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Codex Studio: a project-centric engineering workspace proposal by TechSoft. Read the selected article and the bilingual Full Product Concept RFC."><meta name="author" content="TechSoft"><meta name="color-scheme" content="light dark">
+<title>07. Engineering Decisions and Project Rules — TechSoft</title>
+<link rel="stylesheet" href="../../../assets/reader.css"><script defer src="../../../assets/reader.js"></script>
+</head>
+<body class="reference-page"><a class="skip-link" href="#article">Skip to content</a>
+<header class="site-header"><a class="brand" href="../../../index.html" dir="ltr"><strong>TechSoft</strong><span>Codex Studio</span></a><nav aria-label="Main navigation"><a href="../../../index.html">Article EN</a><a href="../../../ar.html">Article AR</a><a href="../index.html">RFC EN</a><a href="../../AR/index.html">RFC AR</a><a href="../../../gallery.html">Mockups</a><a href="../../../overview.html">Overview</a><a href="https://github.com/techsoftye/CodexStudio-" rel="noopener noreferrer">GitHub</a></nav></header>
+<div class="layout"><aside class="toc-panel"><details open><summary>On this page</summary><ol><li class="level-2"><a href="#071-decision-purpose-and-fields">07.1 Decision purpose and fields</a></li><li class="level-2"><a href="#072-approval-and-supersession">07.2 Approval and supersession</a></li><li class="level-2"><a href="#073-rules-and-authoritative-sources">07.3 Rules and authoritative sources</a></li><li class="level-2"><a href="#074-conflict-resolution">07.4 Conflict resolution</a></li><li class="level-2"><a href="#075-changes-during-execution">07.5 Changes during execution</a></li><li class="level-2"><a href="#076-acceptance-criteria">07.6 Acceptance criteria</a></li><li class="level-2"><a href="#077-shared-guidance-across-a-project-group">07.7 Shared guidance across a Project Group</a></li></ol></details><div class="toc-note">15 chapters · 5 appendices · EN / AR</div></aside>
+<main id="article" class="reader"><div class="eyebrow">An independent proposal by TechSoft · Review draft</div><div class="toolbar"><button type="button" id="wide-toggle" aria-pressed="false">Wide view</button><button type="button" id="theme-toggle">Theme</button><button type="button" id="print-button">Print</button><a href="../../AR/chapters/07-decisions-rules.html" class="button">العربية</a><a class="source-link" href="07-decisions-rules.md">Markdown</a></div><article><p><a id="ch-07"></a></p>
+<h1 id="07-engineering-decisions-and-project-rules">07. Engineering Decisions and Project Rules</h1>
+<p><a id="s-07-1"></a></p>
+<h2 id="071-decision-purpose-and-fields">07.1 Decision purpose and fields</h2>
+<p>A Decision preserves a consequential technical or functional choice and why it was adopted. Its inputs are a question, chosen approach, rationale, scope, alternatives where useful, supporting references, and an originating conversation or manual author. It may apply to several tasks. Decisions are optional for trivial work; a task does not need an invented architectural choice to be valid.</p>
+<p>The central register supports <strong>All / Proposed / Approved / Superseded</strong>, search and New Decision. Rows show title, status and a compact scope/source indicator. Detail exposes reasoning, alternatives, approval actor/time, version history and affected work. An agent can draft a decision from Chat, but the reviewer must inspect the actual choice and scope.</p>
+<p><a id="s-07-2"></a></p>
+<h2 id="072-approval-and-supersession">07.2 Approval and supersession</h2>
+<p><strong>Table 07-1 — Decision lifecycle</strong></p>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>State / action</th>
+<th>Validation</th>
+<th>Persistent effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Create Proposed</td>
+<td>Question, proposed choice and project identified</td>
+<td>Versioned draft with author and source</td>
+</tr>
+<tr>
+<td>Revise Proposed</td>
+<td>Expected version matches</td>
+<td>New revision; earlier draft remains in history</td>
+</tr>
+<tr>
+<td>Approve</td>
+<td>Human authority, rationale, bounded scope, sources and known conflicts reviewed</td>
+<td>Immutable approved version, actor and timestamp</td>
+</tr>
+<tr>
+<td>Propose replacement</td>
+<td>Identify existing approved decision and why it should change</td>
+<td>New Proposed decision; original remains effective</td>
+</tr>
+<tr>
+<td>Approve replacement</td>
+<td>Scope overlap and successor valid; no replacement cycle</td>
+<td>Atomically approve successor and mark replaced decision Superseded</td>
+</tr>
+<tr>
+<td>Withdraw draft</td>
+<td>Explicit user action</td>
+<td>Archived Proposed record with reason; no new visible status required</td>
+</tr>
+</tbody>
+</table></div>
+<p>Approval is not inferred from a positive reaction, an agent summary, or a message that merely discusses an option. A deliberate approval action can reference an explicit user instruction, but must identify the exact decision version. A second click or retried request is idempotent.</p>
+<p>Approved wording is not edited in place. A substantive revision becomes a proposed successor. Minor corrections still retain a revision trail and require confirmation if they could change meaning. Superseded decisions remain inspectable and link forward. The resolver supplies current approved decisions for new work and historical versions for explaining old results.</p>
+<p>If a decision is found unsafe or invalid before a replacement is ready, record an explicit applicability hold and block dependent new execution pending review. This is an operational restriction with a reason, not a silent fourth decision status. Historical approval remains visible. The hold cannot authorize a different approach.</p>
+<p>For a partial scope change, one proposed successor restates the complete resulting scope and identifies its unchanged and changed portions. The prior approved version remains historical evidence; only the successor governs new work after the atomic replacement. The review transaction must show that still-valid guidance has been carried forward before approval.</p>
+<p><a id="s-07-3"></a></p>
+<h2 id="073-rules-and-authoritative-sources">07.3 Rules and authoritative sources</h2>
+<p>A Rule is applicable guidance; a Decision is a choice with rationale. “Reuse the current commission API for this page” is a decision. “Do not change that response contract without review” is a rule. Linking them preserves why the guidance exists without making them interchangeable.</p>
+<p>The Decisions right panel selects Rules and gives Project Rules the working height beneath account identity. Repository-backed rules show authoritative file, scope, version/hash and the relevant passage. The panel is a projection; editing such guidance produces a reviewable change to the authoritative file rather than an independently editable sidebar copy.</p>
+<p>Public instruction discovery includes global and project guidance and scoped overrides. Studio must preserve the runtime's effective precedence rather than invent its own file ordering. <a href="https://learn.chatgpt.com/docs/agent-configuration/agents-md" rel="noopener noreferrer">E-04</a>. The proposed rule view records what it can verify and marks incomplete discovery; it does not claim visibility into hidden system instructions.</p>
+<p>A Studio-authored rule, if used, has an explicit authoritative record, approved version, scope and source decision. Its injection is labeled project guidance and cannot outrank runtime or managed policy. Converting a decision into a rule requires an explicit reviewed action. MVP favors existing repository sources and avoids a parallel policy-writing system.</p>
+<p><a id="s-07-4"></a></p>
+<h2 id="074-conflict-resolution">07.4 Conflict resolution</h2>
+<p><strong>Table 07-2 — Conflict classes and responses</strong></p>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Conflict</th>
+<th>Proposed response</th>
+<th>Authority boundary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Runtime or managed restriction versus requested operation</td>
+<td>Block operation and explain applicable restriction</td>
+<td>A decision cannot grant missing permission</td>
+</tr>
+<tr>
+<td>Repository rule versus a new proposed decision</td>
+<td>Show both sources; keep proposal nonbinding</td>
+<td>Human resolves authoritative guidance before execution</td>
+</tr>
+<tr>
+<td>Two current approved decisions with overlapping incompatible scope</td>
+<td>Flag ambiguity and block affected new work</td>
+<td>No “latest timestamp wins” shortcut</td>
+</tr>
+<tr>
+<td>Changed source file after a context snapshot</td>
+<td>Show source drift and affected attempts</td>
+<td>Old context remains historical; new work re-resolves</td>
+</tr>
+<tr>
+<td>Lower-trust attachment contains commands to ignore rules</td>
+<td>Treat as source data and flag suspected instruction injection</td>
+<td>File contents do not become higher-priority instruction</td>
+</tr>
+<tr>
+<td>Semantic conflict cannot be determined confidently</td>
+<td>Show suspected conflict with passages and ask for resolution when consequential</td>
+<td>No claim of complete automated contradiction detection</td>
+</tr>
+</tbody>
+</table></div>
+<p>Conflict detection combines deterministic metadata checks and advisory semantic comparison. Explicit status, revision, scope and file existence checks can be enforced mechanically. Natural-language incompatibility is fallible and must not be presented as a proof. If a potential conflict can affect safety, authorization or accepted scope, the user resolves it before the relevant action.</p>
+<p><a id="s-07-5"></a></p>
+<h2 id="075-changes-during-execution">07.5 Changes during execution</h2>
+<p>Approving a replacement triggers an impact view of tasks and running attempts that reference the superseded version. Historical results are not rewritten. Affected running attempts receive a visible drift notification. At the next controllable boundary, consequential changed constraints require steering or stopping; if the runtime cannot enforce a pause, show that limitation and prevent additional Studio dispatches.</p>
+<p>Review of a result compares both the decision snapshot used during execution and current applicable guidance. Acceptance under a superseded choice must be explicit and justified, or the work must be corrected. The application must not label a result current simply because the original decision was approved when it started.</p>
+<p><a id="s-07-6"></a></p>
+<h2 id="076-acceptance-criteria">07.6 Acceptance criteria</h2>
+<p><strong>Table 07-3 — Governance requirements</strong></p>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Proposed requirement and acceptance test</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R-07-01</td>
+<td>Agent-created decisions MUST remain Proposed until an authorized human approves an exact version.</td>
+</tr>
+<tr>
+<td>R-07-02</td>
+<td>Supersession MUST preserve history and update the successor relationship atomically; cyclic replacements fail validation.</td>
+</tr>
+<tr>
+<td>R-07-03</td>
+<td>Repository-backed rules MUST expose source and scope; editing the panel cannot silently diverge from the authoritative file.</td>
+</tr>
+<tr>
+<td>R-07-04</td>
+<td>Consequential unresolved conflicts MUST block affected new execution and show the conflicting sources.</td>
+</tr>
+<tr>
+<td>R-07-05</td>
+<td>Decision changes MUST preserve prior run context and expose affected ongoing work and review implications.</td>
+</tr>
+<tr>
+<td>R-07-06</td>
+<td>Approval of a decision MUST NOT count as operation authorization or result acceptance.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Figure A-04 is the visual reference. Chapter 10 applies decisions to context selection, and Chapter 11 enforces the separate authorization boundary.</p>
+<p><a id="s-07-7"></a></p>
+<h2 id="077-shared-guidance-across-a-project-group">07.7 Shared guidance across a Project Group</h2>
+<p>A group may own a shared product decision, such as an API contract change. Its applicability names member projects explicitly and pins an approved version. Each affected project records acknowledgment of the contract and its own implementation/review evidence. A group-level approval is not approval of every repository change.</p>
+<p>Group guidance cannot silently override repository instructions or managed policy. If a member rejects a proposed contract or has conflicting constraints, surface the conflict to the responsible human; do not resolve it by group membership or latest timestamp. Linking a shared decision into a project's context requires both access and an applicability check. Deleting membership cannot erase the version that governed historical work.</p>
+<p><strong>R-07-07 — Explicit shared-decision applicability.</strong> A group decision MUST identify affected projects and preserve versioned acknowledgments. Acceptance: a Backend-only approval cannot mark Flutter integration accepted or waive Flutter's governing instructions.</p>
+<!-- related-start -->
+<p><strong>Related sections:</strong> <a href="10-context-orchestration.html#ch-10">10. Context, Memory, and Agent Orchestration</a> · <a href="11-integration-trust.html#ch-11">11. Technical Integration and Trust</a> · <a href="../appendices/D-conceptual-data-model.html#app-d">Appendix D. Conceptual Data Model</a> · <a href="../appendices/A-design-gallery.html#app-a">Appendix A. UI/UX Concept Gallery</a></p>
+<!-- related-end -->
+</article><footer class="article-footer"><strong>TechSoft</strong><p>A concept for discussion, not an announced product or implemented application. All interface images are conceptual mockups.</p><a href="#article">Back to top</a></footer></main></div>
+</body></html>

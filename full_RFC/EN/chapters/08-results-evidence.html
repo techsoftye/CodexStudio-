@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Codex Studio: a project-centric engineering workspace proposal by TechSoft. Read the selected article and the bilingual Full Product Concept RFC."><meta name="author" content="TechSoft"><meta name="color-scheme" content="light dark">
+<title>08. Execution Results and Evidence — TechSoft</title>
+<link rel="stylesheet" href="../../../assets/reader.css"><script defer src="../../../assets/reader.js"></script>
+</head>
+<body class="reference-page"><a class="skip-link" href="#article">Skip to content</a>
+<header class="site-header"><a class="brand" href="../../../index.html" dir="ltr"><strong>TechSoft</strong><span>Codex Studio</span></a><nav aria-label="Main navigation"><a href="../../../index.html">Article EN</a><a href="../../../ar.html">Article AR</a><a href="../index.html">RFC EN</a><a href="../../AR/index.html">RFC AR</a><a href="../../../gallery.html">Mockups</a><a href="../../../overview.html">Overview</a><a href="https://github.com/techsoftye/CodexStudio-" rel="noopener noreferrer">GitHub</a></nav></header>
+<div class="layout"><aside class="toc-panel"><details open><summary>On this page</summary><ol><li class="level-2"><a href="#081-purpose-and-independent-state-dimensions">08.1 Purpose and independent state dimensions</a></li><li class="level-2"><a href="#082-result-contents-and-evidence-capture">08.2 Result contents and evidence capture</a></li><li class="level-2"><a href="#083-review-workflow">08.3 Review workflow</a></li><li class="level-2"><a href="#084-missing-verification-and-exceptions">08.4 Missing verification and exceptions</a></li><li class="level-2"><a href="#085-retry-interruption-and-recovery">08.5 Retry, interruption and recovery</a></li><li class="level-2"><a href="#086-acceptance-criteria">08.6 Acceptance criteria</a></li><li class="level-2"><a href="#087-attempt-transition-contract">08.7 Attempt transition contract</a></li><li class="level-2"><a href="#088-group-integration-evidence">08.8 Group integration evidence</a></li></ol></details><div class="toc-note">15 chapters · 5 appendices · EN / AR</div></aside>
+<main id="article" class="reader"><div class="eyebrow">An independent proposal by TechSoft · Review draft</div><div class="toolbar"><button type="button" id="wide-toggle" aria-pressed="false">Wide view</button><button type="button" id="theme-toggle">Theme</button><button type="button" id="print-button">Print</button><a href="../../AR/chapters/08-results-evidence.html" class="button">العربية</a><a class="source-link" href="08-results-evidence.md">Markdown</a></div><article><p><a id="ch-08"></a></p>
+<h1 id="08-execution-results-and-evidence">08. Execution Results and Evidence</h1>
+<p><a id="s-08-1"></a></p>
+<h2 id="081-purpose-and-independent-state-dimensions">08.1 Purpose and independent state dimensions</h2>
+<p>Results answers what happened during an execution attempt and what evidence supports the reported outcome. A Task describes intended work; an Execution Attempt records runtime activity; a Result summarizes that attempt; a Check records verification; a Review records human acceptance. A File is supporting material, not the result itself.</p>
+<p><strong>Table 08-1 — State dimensions</strong></p>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Proposed values</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Task</td>
+<td>Todo / Active / Review / Done / Deferred</td>
+<td>Planning and accepted completion</td>
+</tr>
+<tr>
+<td>Attempt lifecycle</td>
+<td>Queued / Starting / Running / WaitingApproval / Interrupted / Finished / Failed / Unknown</td>
+<td>Runtime activity, independent of work quality</td>
+</tr>
+<tr>
+<td>Result outcome</td>
+<td>Completed / Partial / Failed; unset while undetermined</td>
+<td>Reported achievement against captured task scope</td>
+</tr>
+<tr>
+<td>Check</td>
+<td>Passed / Failed / Not Run / Inconclusive</td>
+<td>Evidence from a specific check on a specific snapshot</td>
+</tr>
+<tr>
+<td>Result review</td>
+<td>Pending Review / Accepted / Changes Requested</td>
+<td>Human judgment of an exact result version</td>
+</tr>
+</tbody>
+</table></div>
+<p>Unknown means runtime state cannot currently be established; it is not success or confirmed failure. Interrupted means interruption is confirmed. Finished means execution ended normally, not that the task passed. An unavailable test environment yields Not Run, while a test that ran but produced insufficient usable evidence is Inconclusive. A suite with mixed results is represented by individual checks or an explicitly partial suite, never a misleading single pass.</p>
+<p>The preserved quick filters are <strong>All / Completed / Partial / Failed / Pending Review</strong>. Pending Review selects a separate review dimension and may overlap all outcomes. An unknown or unfinished attempt remains discoverable from All with outcome unset. Any summary counts must state their dimensions and must not add overlapping buckets into a total.</p>
+<p><a id="s-08-2"></a></p>
+<h2 id="082-result-contents-and-evidence-capture">08.2 Result contents and evidence capture</h2>
+<p>A result identifies project, task and task version, attempt, relevant runtime references, execution environment, start/end observations where known, context manifest, work summary, changed files, check records, unresolved findings and linked artifacts. Outcome is an attributed assessment, not a direct reading of an agent's confidence.</p>
+<p>The code identity must include a commit or equivalent immutable base and the actual change snapshot. For dirty working trees, capture the preexisting state and resulting patch or artifact hashes. A branch name alone is insufficient. Untracked and binary files need explicit inclusion or exclusion. If safe capture is unavailable, label evidence incomplete and prevent a verified-completion claim.</p>
+<p>A changed-file count derives from the captured change set. Test counts derive from a parser or tool output with a known source. If the tool emits only exit status, display that fact rather than inventing test totals. A command record includes command description, working directory, environment identifier, relevant tool version when available, timestamps, exit status and accessible output reference. Secrets must be redacted without concealing that redaction occurred.</p>
+<p><strong>Table 08-2 — Evidence identity and limits</strong></p>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Evidence</th>
+<th>Minimum binding</th>
+<th>Limit displayed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Diff</td>
+<td>Base revision plus captured patch and included file set</td>
+<td>Preexisting changes, untracked exclusions or unsupported binaries</td>
+</tr>
+<tr>
+<td>Test report</td>
+<td>Command/check ID, snapshot, environment, observation time</td>
+<td>Failed / Not Run / Inconclusive checks; parser limitations</td>
+</tr>
+<tr>
+<td>Screenshot or generated report</td>
+<td>File version/hash, origin and capture context</td>
+<td>Illustration versus runtime observation</td>
+</tr>
+<tr>
+<td>Agent summary</td>
+<td>Authoring attempt and supporting references</td>
+<td>Reported interpretation; not independent test evidence</td>
+</tr>
+<tr>
+<td>External check link</td>
+<td>Provider identity, external record and revision if available</td>
+<td>Unavailable content or unverifiable current access</td>
+</tr>
+</tbody>
+</table></div>
+<p><a id="s-08-3"></a></p>
+<h2 id="083-review-workflow">08.3 Review workflow</h2>
+<p>The user selects a result; the right panel shows that result and its evidence links. <strong>Review Changes</strong> opens the captured change set by default, clearly distinguishing it from the current checkout. <strong>Open Task</strong> returns to intended scope and criteria. <strong>Re-run</strong> opens a new execution intent after current context, side effects, repository and authorization are checked.</p>
+<p>Review proceeds against the captured task version and acceptance criteria. The reviewer can accept, request changes, or leave the result pending. A request for changes records specific findings and moves the task to Active only through the corresponding task transition. An Accepted result remains an immutable historical judgment even when later code changes make it inapplicable to the current tree.</p>
+<p>Task completion can cite several accepted results if no single attempt covers the full scope. The completion record must identify which result or manual evidence supports each criterion. A latest-run shortcut is insufficient. Accepting an inspection-only result may close an analysis task; it cannot establish implementation completion for a different task.</p>
+<p><a id="s-08-4"></a></p>
+<h2 id="084-missing-verification-and-exceptions">08.4 Missing verification and exceptions</h2>
+<p>A required Not Run, Failed or Inconclusive check blocks <strong>verified completion</strong>. If the responsible human intentionally accepts a narrower outcome or waives a criterion within their authority, record the exception, reason, actor, affected criterion and follow-up. The result and task visibly retain “accepted with verification exception”; no missing check becomes Passed.</p>
+<p>Mandatory policy requirements cannot be waived through a Studio button. If a release check is required by repository or organization policy, the result may be accepted for limited development review, but cannot claim release readiness. Closing a task and granting permission to deploy are separate operations.</p>
+<p>When a check is rerun after code changes, it belongs to the new snapshot and usually a new attempt. If additional evidence is attached without changing the code, create a new result version; existing acceptance remains bound to the old version until reviewed again. Corrections to summaries cannot mutate underlying command output.</p>
+<p><a id="s-08-5"></a></p>
+<h2 id="085-retry-interruption-and-recovery">08.5 Retry, interruption and recovery</h2>
+<p>Re-run is not command replay. It creates a new attempt linked to its predecessor and includes unresolved findings and current guidance. Before repeating an operation with external side effects, establish whether the earlier operation occurred. An uncertain dispatch or timeout must be reconciled before another start.</p>
+<p>An interrupted attempt retains partial changes and available evidence. The user can inspect, continue where supported, or start a correction. Studio never silently resets a worktree. A crash before result finalization produces an incomplete record that can be reconciled from available runtime events; refreshing Results cannot execute work.</p>
+<p><a id="s-08-6"></a></p>
+<h2 id="086-acceptance-criteria">08.6 Acceptance criteria</h2>
+<p><strong>Table 08-3 — Evidence requirements</strong></p>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Proposed requirement and acceptance test</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R-08-01</td>
+<td>All five state dimensions MUST remain independent. A Finished attempt with a Not Run required check stays unverified and Pending Review.</td>
+</tr>
+<tr>
+<td>R-08-02</td>
+<td>Review Changes MUST open the recorded snapshot or explain its unavailability; it cannot substitute today's file.</td>
+</tr>
+<tr>
+<td>R-08-03</td>
+<td>Counts and check states MUST be evidence-derived. A successful build cannot populate unrelated acceptance checks as Passed.</td>
+</tr>
+<tr>
+<td>R-08-04</td>
+<td>Re-run MUST create a new attributable attempt and preserve earlier evidence; unknown side effects require reconciliation.</td>
+</tr>
+<tr>
+<td>R-08-05</td>
+<td>Acceptance MUST bind actor, exact result version and task criteria; exceptions remain visible and cannot bypass enforced policy.</td>
+</tr>
+<tr>
+<td>R-08-06</td>
+<td>Additional evidence or corrected summaries MUST preserve review history and require renewed acceptance when its subject changes.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Figure A-05 contains illustrative counts only. Chapter 11 defines event ingestion and recovery; Appendix C demonstrates the distinctions in a continuous example.</p>
+<p><a id="s-08-7"></a></p>
+<h2 id="087-attempt-transition-contract">08.7 Attempt transition contract</h2>
+<p><strong>Table 08-4 — Execution-attempt transitions</strong></p>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>From</th>
+<th>Trigger</th>
+<th>To and guard</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Queued</td>
+<td>Explicit dispatch after context and permission validation</td>
+<td>Starting; durable intent exists</td>
+</tr>
+<tr>
+<td>Starting</td>
+<td>Runtime acknowledges active work</td>
+<td>Running; runtime identity persisted</td>
+</tr>
+<tr>
+<td>Starting</td>
+<td>Explicit launch rejection</td>
+<td>Failed; preserve rejection and any known side effects</td>
+</tr>
+<tr>
+<td>Starting or Running</td>
+<td>Connection lost or acknowledgement ambiguous</td>
+<td>Unknown; retain last confirmed observation</td>
+</tr>
+<tr>
+<td>Running</td>
+<td>Runtime requests operation consent</td>
+<td>WaitingApproval; request identity and scope visible</td>
+</tr>
+<tr>
+<td>WaitingApproval</td>
+<td>Valid consent and runtime continuation</td>
+<td>Running; never infer continuation from the UI click alone</td>
+</tr>
+<tr>
+<td>WaitingApproval</td>
+<td>Denial, expiry or cancellation</td>
+<td>Follow observed runtime outcome: Running with denied action, Interrupted or Failed; no invented terminal state</td>
+</tr>
+<tr>
+<td>Running</td>
+<td>Normal terminal event</td>
+<td>Finished; result outcome and review remain separate</td>
+</tr>
+<tr>
+<td>Running</td>
+<td>Confirmed runtime failure or interruption</td>
+<td>Failed or Interrupted; preserve partial evidence</td>
+</tr>
+<tr>
+<td>Unknown</td>
+<td>Supported reconciliation finds current/terminal state</td>
+<td>Corresponding observed state; no automatic new dispatch</td>
+</tr>
+<tr>
+<td>Interrupted</td>
+<td>Explicit supported continuation</td>
+<td>Running with context amendment, or a new linked attempt if continuity cannot be established</td>
+</tr>
+<tr>
+<td>Finished or Failed</td>
+<td>User requests Re-run</td>
+<td>New Queued attempt; original remains terminal</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>R-08-07 — Observable transitions.</strong> Attempt state MUST follow confirmed runtime events or an explicitly uncertain observation. Lost connectivity cannot establish Finished, and a rejected approval cannot be translated into an assumed cancellation without runtime evidence.</p>
+<p><a id="s-08-8"></a></p>
+<h2 id="088-group-integration-evidence">08.8 Group integration evidence</h2>
+<p>Each member task retains its own results and acceptance history. The Change Set's integration assessment references these results and an immutable Integration Manifest; it is not a File and cannot be represented by a count of green task badges. Record missing platforms, stale contracts and failed member checks explicitly.</p>
+<p>Acceptance of a group outcome requires an authorized human judgment on the combined evidence. A member's accepted result remains historical if later contract drift invalidates compatibility; the integration assessment becomes stale and needs renewed evidence/review. Accepting integration does not grant deployment authority. Sections 10.8 and D.8 define the coordination relationships; V-14/V-15 specify the partial-failure cases.</p>
+<!-- related-start -->
+<p><strong>Related sections:</strong> <a href="06-tasks-planning.html#ch-06">06. Tasks and Development Planning</a> · <a href="09-library-resources.html#ch-09">09. Project Library and Resources</a> · <a href="11-integration-trust.html#ch-11">11. Technical Integration and Trust</a> · <a href="../appendices/C-affiliate-scenario.html#app-c">Appendix C. End-to-End Developer Scenario</a> · <a href="../appendices/D-conceptual-data-model.html#app-d">Appendix D. Conceptual Data Model</a> · <a href="../appendices/A-design-gallery.html#app-a">Appendix A. UI/UX Concept Gallery</a></p>
+<!-- related-end -->
+</article><footer class="article-footer"><strong>TechSoft</strong><p>A concept for discussion, not an announced product or implemented application. All interface images are conceptual mockups.</p><a href="#article">Back to top</a></footer></main></div>
+</body></html>
